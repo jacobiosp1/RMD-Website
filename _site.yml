@@ -1,4 +1,6 @@
 name: "RMD-Website"
+output_dir: "_site"
+
 navbar:
   title: "RMD Website"
   left:
@@ -10,7 +12,7 @@ navbar:
 
   right:
     - text: "GitHub"
-      href: https://https://github.com/jacobiosp1/RMD-Website
+      href: https://github.com/jacobiosp1/RMD-Website
 output:
   html_document:
     theme: cosmo
