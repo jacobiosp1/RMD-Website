@@ -1,0 +1,22 @@
+name: "RMD-Website"
+navbar:
+  title: "RMD Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+      
+
+  right:
+    - text: "GitHub"
+      href: https://https://github.com/jacobiosp1/RMD-Website
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+    df_print: paged

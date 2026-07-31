@@ -1,0 +1,15 @@
+---
+title: "简单数据分析"
+author: "张璇璇"
+date: "`r Sys.Date()`"
+---
+
+```{r}
+plot(mtcars$wt, mtcars$mpg,
+     main = "车重与油耗关系",
+     xlab = "车重 (1000 lbs)",
+     ylab = "油耗",
+     col = "blue",
+     pch = 19)
+```
+
