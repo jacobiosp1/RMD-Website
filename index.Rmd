@@ -10,6 +10,13 @@ date: "`r Sys.Date()`"
 # 数据路径: E:/R练习
 # 输出路径: E:/R练习/Swimmer_Plot.png
 # ========================================================================
+# 检查并安装缺失的包
+if (!requireNamespace("ggplot2", quietly = TRUE)) {
+  install.packages("ggplot2")
+}
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+}
 
 library(ggplot2)
 library(tidyverse)
