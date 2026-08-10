@@ -4,7 +4,7 @@ author: "张璇璇"
 date: "`r Sys.Date()`"
 ---
 
-```{r}
+```{r, fig.width=14, fig.height=9, echo=FALSE, warning=FALSE, message=FALSE}
 # ========================================================================
 # 游泳图 (Swimmer Plot) - 完全复现 SAS 版本（修正版）
 # 数据路径: E:/R练习
@@ -23,10 +23,10 @@ library(tidyverse)
 
 # ------------------------------ 1. 读取数据 ---------------------------------
 
-adsl <- read.csv("Z:/DEV/JABTEST/JABTEST_1001/TEST/ADAM/DATA/sas2csv/ADSL.csv", 
+adsl <- read.csv("data/ADSL.csv", 
                  stringsAsFactors = FALSE, 
                  na.strings = c("", "NA"))
-adrs <- read.csv("Z:/DEV/JABTEST/JABTEST_1001/TEST/ADAM/DATA/sas2csv/ADRS.csv", 
+adrs <- read.csv("data/ADRS.csv", 
                  stringsAsFactors = FALSE, 
                  na.strings = c("", "NA"))
 
@@ -291,5 +291,7 @@ p <- ggplot() +
 
 # 保存图片
 ggsave("Swimmer_Plot.png", plot = p, width = 12, height = 8, dpi = 300)
+# 直接输出图形（不需要 ggsave）
+p
 ```
 
