@@ -25,8 +25,11 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
-      - name: Install rmarkdown
-        run: Rscript -e "install.packages('rmarkdown')"
+      # ----- 设置 CRAN 镜像（清华镜像，速度快）并安装所有包 -----
+      - name: Install R packages
+        run: |
+          Rscript -e "options(repos = c(CRAN = 'https://cloud.r-project.org/'))"
+          Rscript -e "install.packages(c('rmarkdown', 'tidyverse', 'knitr', 'kableExtra', 'rstatix'))"
 
       - name: Build site
         run: Rscript -e "rmarkdown::render_site()"

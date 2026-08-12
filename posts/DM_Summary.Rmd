@@ -4,15 +4,9 @@ output: html_document
 ---
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-# ----- 1. 自动检查并安装所需包 -----
-packages_needed <- c("dplyr", "tidyr", "knitr", "kableExtra")
-for (pkg in packages_needed) {
-  if (!require(pkg, character.only = TRUE)) {
-    install.packages(pkg)
-    library(pkg, character.only = TRUE)
-  }
-}
-
+library(tidyverse)
+library(knitr)
+library(kableExtra)
 # ----- 2. 模拟临床数据 -----
 set.seed(2026)  # 固定随机种子
 
