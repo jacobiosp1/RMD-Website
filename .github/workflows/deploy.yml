@@ -29,7 +29,7 @@ jobs:
       - name: Install R packages
         run: |
           Rscript -e "options(repos = c(CRAN = 'https://cloud.r-project.org/'))"
-          Rscript -e "install.packages(c('rmarkdown', 'tidyverse', 'knitr', 'kableExtra', 'rstatix'))"
+          Rscript -e "install.packages(c('rmarkdown', 'tidyverse', 'knitr', 'kableExtra', 'ggplot2'))"
 
       - name: Build site
         run: Rscript -e "rmarkdown::render_site()"
