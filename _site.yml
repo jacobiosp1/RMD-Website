@@ -8,6 +8,14 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+ 
+      
+    - text: "数据分析"
+      href: analysis.html
+    - text: "资源下载"
+      href: resources.html
+    - text: "联系我们"
+      href: contact.html
       
 
   right:

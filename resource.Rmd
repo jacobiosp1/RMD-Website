@@ -1,0 +1,9 @@
+---
+title: "资源下载"
+output: html_document
+---
+
+## 下载资源
+
+- [数据集下载](./data.zip)
+- [报告PDF](./report.pdf)

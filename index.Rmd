@@ -1,10 +1,15 @@
 ---
-title: "各部门呈现内容"
+title: "首页"
 author: "张璇璇"
 date: "`r Sys.Date()`"
 ---
 
-## 文章列表
+
+# 欢迎来到 RMD 网站
+
+点击下方板块，跳转到详细页面：
+
+---
 
 ```{r, echo=FALSE, results='asis'}
 library(rmarkdown)
@@ -21,3 +26,23 @@ for (f in files) {
   cat("* [", title, "](", href, ")\n", sep = "")
 }
 ```
+
+
+## [📊 数据分析 →](./analysis.html)
+
+点击查看详细的数据分析结果。
+
+---
+
+## [📦 资源下载 →](./resources.html)
+
+点击下载数据、代码或报告。
+
+
+---
+
+## [📧 联系我们 →](./contact.html)
+
+如有疑问，欢迎联系我们。
+
+---
