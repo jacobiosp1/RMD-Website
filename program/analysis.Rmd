@@ -7,7 +7,7 @@ output:
     toc: true
     toc_float: true
     toc_depth: 3
-    code_folding: hide    
+    code_folding: show    
     df_print: paged
 ---
 
