@@ -55,11 +55,12 @@ jobs:
           Rscript -e "
             library(staticryptR)
             staticryptr(
-              files = '_site/',
+              files = '_site/index.html',
               directory = '.',
               password = Sys.getenv('SITE_PASSWORD'),
+              remember = 30,    
               short = TRUE,
-              recursive = TRUE
+              recursive = FALSE
             )
           "
 
