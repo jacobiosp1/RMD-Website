@@ -1,5 +1,14 @@
 ---
-title: "数据图表"
+title: "数据图表"          
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide     
+    df_print: paged
 ---
 
 ## Swimmer Plot
