@@ -57,9 +57,8 @@ jobs:
             staticryptr(
               files = '_site/index.html',
               password = Sys.getenv('SITE_PASSWORD'),
-              remember = 30,    
-              short = TRUE,
-              recursive = FALSE
+              short = TRUE
+             
             )
           "
 
