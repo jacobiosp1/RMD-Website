@@ -12,7 +12,7 @@ navbar:
       
     - text: "数据分析"
       href: analysis.html
-    - text: "资源下载"
+    - text: "数据管理"
       href: resources.html
     - text: "联系我们"
       href: contact.html

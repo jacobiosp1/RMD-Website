@@ -3,6 +3,53 @@ title: "数据分析"
 output: html_document
 ---
 
-## 数据分析详情
+## 试验参与者基线特征（简化版）
 
-这里放您的分析图表、表格或文字描述。
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+library(knitr)
+
+set.seed(2026)
+
+n_per_group <- 30
+total_n <- n_per_group * 2
+
+# 模拟数据（列名全部为英文）
+data <- data.frame(
+  patient_id = paste0("S", sprintf("%03d", 1:total_n)),
+  group = rep(c("试验组", "对照组"), each = n_per_group),
+  age = round(rnorm(total_n, mean = 55, sd = 12), 0),
+  gender = sample(c("男", "女"), total_n, replace = TRUE, prob = c(0.6, 0.4))
+)
+
+# ----- 年龄汇总（均值±标准差） -----
+age_summary <- data %>%
+  group_by(group) %>%
+  summarise(
+    age_mean_sd = paste0(round(mean(age), 1), "±", round(sd(age), 1))
+  ) %>%
+  pivot_wider(names_from = group, values_from = age_mean_sd) %>%
+  mutate(变量 = "年龄 (均值±标准差)")
+
+# ----- 性别汇总（例数+百分比） -----
+gender_summary <- data %>%
+  group_by(group, gender) %>%
+  summarise(count = n(), .groups = "drop") %>%
+  group_by(group) %>%
+  mutate(
+    pct = round(count / sum(count) * 100, 1),
+    display = paste0(count, " (", pct, "%)")
+  ) %>%
+  select(group, gender, display) %>%
+  pivot_wider(names_from = group, values_from = display) %>%
+  mutate(变量 = ifelse(gender == "男", "性别 - 男", "性别 - 女")) %>%
+  select(-gender)
+
+# ----- 合并并输出 -----
+final_table <- bind_rows(age_summary, gender_summary) %>%
+  select(变量, 试验组, 对照组)
+
+kable(final_table, caption = "表1. 患者基线特征", align = "c")
+```

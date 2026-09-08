@@ -34,9 +34,9 @@ for (f in files) {
 
 ---
 
-## [📦 资源下载 →](./resources.html)
+## [📦 数据管理 →](./resources.html)
 
-点击下载数据、代码或报告。
+点击查看数据报告。
 
 
 ---
