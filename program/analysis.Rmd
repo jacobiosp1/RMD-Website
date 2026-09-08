@@ -5,7 +5,7 @@ title: "数据分析"
 ## 试验参与者基线特征（简化版）
 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 library(tidyr)
 library(knitr)
