@@ -46,19 +46,22 @@ jobs:
       - name: Build site
         run: Rscript -e "rmarkdown::render_site()"
 
-      # ---------- 加密整个 _site 文件夹 ----------
-      - name: Encrypt index page
-      env:
-      SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
-      run: |
-         Rscript -e "
-         library(staticryptR)
-        staticryptr(
-          files = '_site/index.html',
-          password = Sys.getenv('SITE_PASSWORD'),
-          short = TRUE
-           )
-           "
+        # ---------- 加密整个 _site 文件夹 ----------
+      - name: Encrypt site with staticryptR
+        env:
+          # 从 GitHub Secrets 读取密码
+          SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+        run: |
+          Rscript -e "
+            library(staticryptR)
+            staticryptr(
+              files = '_site/',               
+              directory = '.',                
+              password = Sys.getenv('SITE_PASSWORD'),
+              short = TRUE,             
+              recursive = FALSE           
+            )
+          " 
 
       # ---------- 7. 部署到 GitHub Pages ----------
       - name: Setup Pages
