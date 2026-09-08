@@ -1,5 +1,5 @@
 ---
-title: "figures"
+title: "数据图表"
 output: html_document
 ---
 
@@ -279,7 +279,11 @@ p <- ggplot() +
   guides(
     color = guide_legend(override.aes = list(size = 3), title = NULL),
     fill = guide_legend(override.aes = list(shape = 21, size = 3), title = NULL)
-  )
+  )+
+  labs(
+    title = "Figure 14.2.1.1 研究者根据RECIST 1.1评估的游泳图-所有晚期结直肠癌患者-全分析人群",
+    caption = "数据截止日期：2025-08-01"
+  ) 
 
 # 保存图片
 ggsave("Swimmer_Plot.png", plot = p, width = 12, height = 8, dpi = 300)

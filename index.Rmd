@@ -18,7 +18,7 @@ date: "`r Sys.Date()`"
 
 ---
 
-## [📦 数据报告 →](./reports.html)
+## [📊 数据报告 →](./reports.html)
 
 点击查看数据报告。
 
