@@ -46,7 +46,7 @@ jobs:
       - name: Build site
         run: Rscript -e "rmarkdown::render_site()"
 
-      # ---------- 6. 加密整个 _site 文件夹 ----------
+      # ---------- 加密整个 _site 文件夹 ----------
       - name: Encrypt site with staticryptR
         env:
           # 从 GitHub Secrets 读取密码
@@ -55,10 +55,11 @@ jobs:
           Rscript -e "
             library(staticryptR)
             staticryptr(
-              files = '_site/index.html',
+              files = '_site/',                 # 要加密的文件夹
+              directory = '.',                 # 输出目录设为 "."，即覆盖原文件
               password = Sys.getenv('SITE_PASSWORD'),
-              short = TRUE
-             
+              short = TRUE,             # 若密码较短，设置为 TRUE 以关闭警告
+              recursive = FALSE           # 递归处理所有子文件夹
             )
           "
 
