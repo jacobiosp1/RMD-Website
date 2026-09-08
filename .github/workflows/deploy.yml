@@ -56,7 +56,6 @@ jobs:
             library(staticryptR)
             staticryptr(
               files = '_site/index.html',
-              directory = '_site',
               password = Sys.getenv('SITE_PASSWORD'),
               remember = 30,    
               short = TRUE,
