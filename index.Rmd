@@ -11,22 +11,6 @@ date: "`r Sys.Date()`"
 
 ---
 
-```{r, echo=FALSE, results='asis'}
-library(rmarkdown)
-# 获取 posts 文件夹下所有 .Rmd 文件
-files <- list.files("posts", pattern = "\\.Rmd$", full.names = TRUE)
-
-# 遍历每个文件，读取 YAML 中的标题
-for (f in files) {
-  meta <- rmarkdown::yaml_front_matter(f)
-  title <- meta$title
-  # 生成文件名（不带扩展名）作为链接地址
-  href <- paste0("./posts/", tools::file_path_sans_ext(basename(f)), ".html")
-  # 输出为 Markdown 列表项
-  cat("* [", title, "](", href, ")\n", sep = "")
-}
-```
-
 
 ## [📊 数据分析 →](./analysis.html)
 
@@ -34,12 +18,20 @@ for (f in files) {
 
 ---
 
-## [📦 数据管理 →](./resources.html)
+## [📦 数据报告 →](./reports.html)
 
 点击查看数据报告。
 
 
 ---
+
+## [📦 数据图表 →](./figures.html)
+
+点击查看数据图表。
+
+
+---
+
 
 ## [📧 联系我们 →](./contact.html)
 

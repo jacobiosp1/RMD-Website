@@ -1,0 +1,289 @@
+---
+title: "figures"
+output: html_document
+---
+
+## Swimmer Plot
+
+```{r, fig.width=14, fig.height=9, echo=FALSE, warning=FALSE, message=FALSE}
+# ========================================================================
+# 游泳图 (Swimmer Plot) - 完全复现 SAS 版本（修正版）
+# ========================================================================
+
+library(ggplot2)
+library(tidyverse)
+
+# ------------------------------ 1. 读取数据 ---------------------------------
+
+adsl <- read.csv("../data/ADSL.csv", 
+                 stringsAsFactors = FALSE, 
+                 na.strings = c("", "NA"))
+adrs <- read.csv("../data/ADRS.csv", 
+                 stringsAsFactors = FALSE, 
+                 na.strings = c("", "NA"))
+
+cutdt <- as.Date("2025-08-01")
+
+# ------------------------------ 2. 日期转换 ---------------------------------
+convert_date_silent <- function(x) {
+  if (is.character(x)) {
+    x <- trimws(x)
+    x[x == ""] <- NA
+  }
+  d <- tryCatch(as.Date(x, format = "%d%b%Y"), warning = function(w) NA)
+  if (all(is.na(d)) && any(!is.na(x))) {
+    d <- suppressWarnings(dmy(x))
+  }
+  return(d)
+}
+
+date_cols_adsl <- c("RFSTDTC", "RFENDTC", "RFXSTDTC", "RFXENDTC", "RFICDTC", "RFPENDTC",
+                    "DTHDTC", "TRTSDT", "TRTEDT", "EOTDT", "EOTDT1", "FCRPRDT", 
+                    "FSTPDDT", "SACTDT", "LSTALVDT")
+
+for (col in date_cols_adsl) {
+  if (col %in% names(adsl)) {
+    adsl[[col]] <- convert_date_silent(adsl[[col]])
+  }
+}
+adrs$ADT <- convert_date_silent(adrs$ADT)
+
+# ------------------------------ 3. 筛选人群 ---------------------------------
+adsl_fas <- adsl %>%
+  filter(FASFL == "Y" & grepl("CRC", COHORT, ignore.case = TRUE))
+
+# ------------------------------ 4. 计算治疗分段变量 -------------------------
+adsl_fas <- adsl_fas %>%
+  mutate(
+    trtedt = case_when(
+      !is.na(EOTDT) & !is.na(EOTDT1) ~ pmax(EOTDT, EOTDT1, na.rm = TRUE),
+      !is.na(EOTDT) & is.na(EOTDT1) ~ EOTDT,
+      is.na(EOTDT) & !is.na(EOTDT1) ~ EOTDT1,
+      TRUE ~ cutdt
+    ),
+    miss_dctreas = is.na(DCTREAS),
+    miss_dctreas1 = is.na(DCTREAS1)
+  )
+
+for (i in 1:nrow(adsl_fas)) {
+  row <- adsl_fas[i, ]
+  trt02 <- NA_character_
+  adt_esc <- as.Date(NA)
+  
+  if ( (row$miss_dctreas + row$miss_dctreas1) == 1 && !is.na(row$EOTDT1) && is.na(row$EOTDT) ) {
+    trt02 <- "JAB-21822 800 mg QD"
+    adt_esc <- row$EOTDT1
+  } else if ( (row$miss_dctreas + row$miss_dctreas1) == 1 && !is.na(row$EOTDT) && is.na(row$EOTDT1) ) {
+    trt02 <- "Cetuximab"
+    adt_esc <- row$EOTDT
+  } else if ( (row$miss_dctreas + row$miss_dctreas1) == 0 && !is.na(row$EOTDT1) && !is.na(row$EOTDT) && row$EOTDT1 > row$EOTDT ) {
+    trt02 <- "Cetuximab"
+    adt_esc <- row$EOTDT
+  } else if ( (row$miss_dctreas + row$miss_dctreas1) == 0 && !is.na(row$EOTDT1) && !is.na(row$EOTDT) && row$EOTDT > row$EOTDT1 ) {
+    trt02 <- "JAB-21822 800 mg QD"
+    adt_esc <- row$EOTDT1
+  }
+  
+  adsl_fas$trt02[i] <- trt02
+  adsl_fas$adt_esc[i] <- adt_esc
+}
+
+adsl_fas <- adsl_fas %>%
+  mutate(trtdy = as.numeric(difftime(trtedt, TRTSDT, units = "days")) + 1)
+
+# ------------------------------ 5. 排序和编号 ---------------------------------
+adsl_fas <- adsl_fas %>%
+  arrange(TRT01PN, desc(trtdy), SUBJID) %>%
+  mutate(subjn = row_number())
+
+# ------------------------------ 6. 生成治疗分段数据 -------------------------
+segments <- adsl_fas %>%
+  rowwise() %>%
+  mutate(
+    low1 = 0,
+    high1 = ifelse(!is.na(adt_esc), 
+                   as.numeric(difftime(adt_esc - 1, TRTSDT, units = "days")) / 7,
+                   as.numeric(difftime(trtedt, TRTSDT, units = "days")) / 7),
+    group1 = TRT01P,
+    low2 = ifelse(!is.na(adt_esc), 
+                  as.numeric(difftime(adt_esc, TRTSDT, units = "days")) / 7, 
+                  NA_real_),
+    high2 = ifelse(!is.na(adt_esc), 
+                   as.numeric(difftime(trtedt, TRTSDT, units = "days")) / 7, 
+                   NA_real_),
+    group2 = ifelse(!is.na(adt_esc), trt02, NA_character_)
+  ) %>%
+  ungroup()
+
+segments_long <- segments %>%
+  select(subjn, low1, high1, group1, low2, high2, group2) %>%
+  pivot_longer(
+    cols = c(low1, high1, low2, high2, group1, group2),
+    names_to = c(".value", "segment"),
+    names_pattern = "(low|high|group)(\\d)"
+  ) %>%
+  filter(!is.na(low) & !is.na(high) & !is.na(group)) %>%
+  mutate(
+    segment = as.numeric(segment),
+    low = pmin(low, high),
+    high = pmax(low, high)
+  )
+
+if (nrow(segments_long) == 0) {
+  stop("没有有效的治疗分段数据，请检查数据筛选条件。")
+}
+
+# ------------------------------ 7. 疗效评估数据（过滤首次PD后评估）---------
+# 获取每个受试者首次PD的周数
+first_pd <- adrs %>%
+  filter(PARAMCD == "OVRSP" & ANL02FL == "Y" & AVALC == "PD") %>%
+  group_by(USUBJID) %>%
+  slice_min(ADT, n = 1) %>%
+  ungroup() %>%
+  select(USUBJID, first_pd_weeks = ADT) %>%
+  mutate(first_pd_weeks = as.numeric(difftime(first_pd_weeks, 
+                                              adsl_fas$TRTSDT[match(USUBJID, adsl_fas$USUBJID)], 
+                                              units = "days")) / 7)
+
+# 合并首次PD周数到adrs_ovrsp（仅保留首次PD之前的评估）
+adrs_ovrsp <- adrs %>%
+  filter(PARAMCD == "OVRSP" & ANL02FL == "Y" & !is.na(AVALC)) %>%
+  select(USUBJID, ADT, AVALC, ADY) %>%
+  left_join(adsl_fas %>% select(USUBJID, TRTSDT, subjn), by = "USUBJID") %>%
+  mutate(
+    weeks = as.numeric(difftime(ADT, TRTSDT, units = "days")) / 7,
+    AVALC = factor(AVALC, levels = c("CR", "PR", "SD", "PD", "NE"))
+  ) %>%
+  left_join(first_pd, by = "USUBJID") %>%
+  # 过滤：只保留首次PD之前的评估（或没有PD的受试者保留所有评估）
+  filter(is.na(first_pd_weeks) | weeks <= first_pd_weeks) %>%
+  filter(!is.na(weeks))
+
+# ------------------------------ 8. 死亡数据 ---------------------------------
+death_data <- adsl_fas %>%
+  filter(DTHFL == "Y" & !is.na(DTHDTC)) %>%
+  mutate(
+    death_weeks = as.numeric(difftime(DTHDTC, TRTSDT, units = "days")) / 7
+  ) %>%
+  select(subjn, death_weeks)
+
+# ------------------------------ 9. 治疗进行中箭头 ----------------------------
+ongoing_data <- adsl_fas %>%
+  filter(is.na(DCTREAS) & is.na(DCTREAS1)) %>%
+  mutate(
+    high_weeks = as.numeric(difftime(trtedt, TRTSDT, units = "days")) / 7,
+    arrow_pos = high_weeks + 2.5
+  ) %>%
+  select(subjn, arrow_pos)
+
+# ------------------------------ 10. 绘图参数 -------------------------------
+xmax <- ceiling(max(segments_long$high, na.rm = TRUE) + 5)
+if (!is.finite(xmax)) xmax <- 140  # 扩展到140周
+
+# 颜色定义（与SAS完全一致）
+group_colors <- c("JAB-21822 800 mg QD+Cetuximab" = "#4A90E2",  # cornflowerblue
+                  "JAB-21822 800 mg QD" = "#87CEEB",          # lightskyblue
+                  "Cetuximab" = "#4A90E2")
+
+response_colors <- c("CR" = "gold", "PR" = "red", "SD" = "blue", "PD" = "gray", "NE" = "purple")
+
+# 纵轴标签
+subj_labels <- adsl_fas %>%
+  arrange(subjn) %>%
+  pull(SUBJID)
+
+# ------------------------------ 11. 绘图（匹配目标图） -----------------------
+p <- ggplot() +
+  # 治疗条（不透明，与SAS一致）
+  geom_segment(
+    data = segments_long,
+    aes(x = low, xend = high, y = subjn, yend = subjn, color = group),
+    size = 5, alpha = 1  # 改为不透明
+  ) +
+  # 疗效评估点（PR用三角形，SD用三角形，PD用圆形）
+  # 使用shape=24（上三角）和shape=21（圆形）
+  geom_point(
+    data = adrs_ovrsp %>% filter(AVALC %in% c("PR", "CR")),
+    aes(x = weeks, y = subjn, fill = AVALC),
+    shape = 24, size = 3, color = "black"
+  ) +
+  geom_point(
+    data = adrs_ovrsp %>% filter(AVALC == "SD"),
+    aes(x = weeks, y = subjn, fill = AVALC),
+    shape = 25, size = 3, color = "black"
+  ) +
+  geom_point(
+    data = adrs_ovrsp %>% filter(AVALC == "PD"),
+    aes(x = weeks, y = subjn, fill = AVALC),
+    shape = 21, size = 3, color = "black"
+  ) +
+  geom_point(
+    data = adrs_ovrsp %>% filter(AVALC == "NE"),
+    aes(x = weeks, y = subjn, fill = AVALC),
+    shape = 23, size = 3, color = "black"
+  ) +
+  # 死亡标记（X）
+  geom_point(
+    data = death_data,
+    aes(x = death_weeks, y = subjn),
+    shape = 4, size = 4, color = "black"
+  ) +
+  # 治疗进行中箭头（→）
+  geom_text(
+    data = ongoing_data,
+    aes(x = arrow_pos, y = subjn),
+    label = "\u2192", size = 8, color = "darkgreen", fontface = "bold"
+  ) +
+  # 颜色映射
+  scale_color_manual(
+    name = "",
+    values = group_colors,
+    na.value = "grey"
+  ) +
+  scale_fill_manual(
+    name = "",
+    values = response_colors,
+    na.value = "grey50",
+    drop = FALSE
+  ) +
+  # 坐标轴
+  scale_x_continuous(
+    name = "首次给药后时间（周）",
+    breaks = seq(0, xmax, by = 3),
+    limits = c(-0.5, xmax),
+    expand = c(0.01, 0)
+  ) +
+  scale_y_continuous(
+    name = "Evaluable Patients",
+    breaks = adsl_fas$subjn,
+    labels = subj_labels,
+    expand = c(0.02, 0.02),
+    trans = "reverse"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.y = element_text(size = 7, hjust = 1),
+    axis.title.y = element_text(margin = margin(r = 10)),
+    axis.text.x = element_text(size = 8),
+    axis.title.x = element_text(size = 10),
+    legend.position = c(0.85, 0.15),
+    legend.background = element_rect(fill = "white", color = "black", size = 0.3),
+    legend.key.size = unit(0.5, "cm"),
+    legend.text = element_text(size = 8),
+    legend.title = element_blank(),  # 去掉图例标题
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.margin = margin(5, 10, 5, 5)
+  ) +
+  # 合并图例（覆盖默认，手动合并）
+  guides(
+    color = guide_legend(override.aes = list(size = 3), title = NULL),
+    fill = guide_legend(override.aes = list(shape = 21, size = 3), title = NULL)
+  )
+
+# 保存图片
+ggsave("Swimmer_Plot.png", plot = p, width = 12, height = 8, dpi = 300)
+# 直接输出图形（不需要 ggsave）
+p
+```
+

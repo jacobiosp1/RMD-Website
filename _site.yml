@@ -12,8 +12,10 @@ navbar:
       
     - text: "数据分析"
       href: analysis.html
-    - text: "数据管理"
-      href: resources.html
+    - text: "数据报告"
+      href: reports.html
+    - text: "数据图表"
+      href: figures.html
     - text: "联系我们"
       href: contact.html
       
