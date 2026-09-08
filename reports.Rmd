@@ -3,7 +3,7 @@ title: "数据报告"
 output: html_document
 ---
 
-##试验参与者汇总表
+## 试验参与者汇总表
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
