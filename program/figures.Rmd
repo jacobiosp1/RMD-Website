@@ -5,7 +5,7 @@ output: html_document
 
 ## Swimmer Plot
 
-```{r, fig.width=14, fig.height=9, echo=FALSE, warning=FALSE, message=FALSE}
+```{r, fig.width=14, fig.height=9, echo=TRUE, warning=FALSE, message=FALSE}
 # ========================================================================
 # 游泳图 (Swimmer Plot) - 完全复现 SAS 版本（修正版）
 # ========================================================================
