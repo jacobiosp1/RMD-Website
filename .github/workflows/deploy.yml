@@ -45,6 +45,16 @@ jobs:
       # ---------- 5. 构建网站 ----------
       - name: Build site
         run: Rscript -e "rmarkdown::render_site()"
+        
+        # ---------- 5.1 额外渲染 program/ 子目录中的页面 ----------
+      - name: Render pages in program subdirectory
+        run: |
+          Rscript -e "
+            files <- list.files('program', pattern = '\\.Rmd$', full.names = TRUE)
+            for (f in files) {
+              rmarkdown::render(f, output_dir = 'program', output_file = gsub('\\.Rmd$', '.html', basename(f)))
+                             }
+                     "
 
         # ---------- 加密整个 _site 文件夹 ----------
       - name: Encrypt site with staticryptR
