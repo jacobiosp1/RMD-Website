@@ -11,13 +11,13 @@ navbar:
  
       
     - text: "数据分析"
-      href: program/analysis.html
+      href: _site/analysis.html
     - text: "数据报告"
-      href: program/reports.html
+      href: _site/reports.html
     - text: "数据图表"
-      href: program/figures.html
+      href: _site/figures.html
     - text: "联系我们"
-      href: program/contact.html
+      href: _site/contact.html
       
 
   right:
