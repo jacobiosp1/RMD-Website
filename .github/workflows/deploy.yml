@@ -67,6 +67,10 @@ jobs:
             )
           " 
 
+      - name: Check staticryptR API
+        run: |
+          Rscript -e "library(staticryptR); print(args(staticryptr))"
+
       # ---------- 7. 部署到 GitHub Pages ----------
       - name: Setup Pages
         uses: actions/configure-pages@v4
