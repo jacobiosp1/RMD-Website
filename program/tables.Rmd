@@ -11,7 +11,7 @@ output:
     df_print: paged
 ---
 
-## t_os_ss_x.rtf
+## t_os_ss_x
 
 
 
