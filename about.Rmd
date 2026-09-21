@@ -1,5 +1,5 @@
 ---
-title: "About This Website"
+title: "信息介绍"
 ---
 
 # 临床试验数据分析

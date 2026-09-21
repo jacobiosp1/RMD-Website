@@ -1,11 +1,11 @@
 ---
-title: "首页"
-author: "张璇璇"
+title: "临床数据分析网站"
+author: "Jab-SP"
 date: "`r Sys.Date()`"
 ---
 
 
-# 欢迎来到 RMD 网站
+# 欢迎来到 临床数据分析网站
 
 点击下方板块，跳转到详细页面：
 
