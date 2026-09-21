@@ -18,6 +18,8 @@ navbar:
       href: program/figures.html
     - text: "疗效图表"
       href: program/tables.html
+    - text: "数据列表"
+      href: program/listing.html
     - text: "联系我们"
       href: program/contact.html
       

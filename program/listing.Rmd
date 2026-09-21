@@ -1,0 +1,165 @@
+---
+title: "DLT列表"          
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: show     
+    df_print: paged
+---
+
+## Dose Limiting Toxicities (DLT) - Safety Analysis Set
+
+
+
+```{r}
+  library(dplyr)
+  library(tidyr)
+  library(stringr)
+  library(knitr)
+  library(kableExtra)
+
+# ==============================================================================
+# 1. 读取数据 (对应原 SAS 的 %d_mergesupp 和 merge)
+# ==============================================================================
+# 根据之前的需求，读取路径假定为 ../data/
+ae_raw <- read.csv("../data/ae.csv", stringsAsFactors = FALSE, colClasses = "character", na.strings = c("", "NA", ".", "N/A", "NULL"))
+suppae_raw <- read.csv("../data/suppae.csv", stringsAsFactors = FALSE, colClasses = "character", na.strings = c("", "NA", ".", "N/A", "NULL"))
+adsl_raw <- read.csv("../data/adsl_1.csv", stringsAsFactors = FALSE, colClasses = "character", na.strings = c("", "NA", ".", "N/A", "NULL"))
+
+# 统一变量名大小写，防止 CSV 名称与 SAS 中不一致
+names(ae_raw) <- toupper(str_trim(names(ae_raw)))
+names(suppae_raw) <- toupper(str_trim(names(suppae_raw)))
+names(adsl_raw) <- toupper(str_trim(names(adsl_raw)))
+
+# ==============================================================================
+# 2. 数据处理 (对应 SAS 的 %d_mergesupp 和 DATA dlt 步)
+# ==============================================================================
+
+# 2.1 从 SUPPAE 提取 AEDLT, AEONGO 并转化为宽表
+suppae_wide <- suppae_raw %>%
+  mutate(QNAM = toupper(str_trim(QNAM))) %>%
+  filter(QNAM %in% c("AEDLT", "AEONGO")) %>%
+  select(USUBJID, IDVAR, IDVARVAL, QNAM, QVAL) %>%
+  tidyr::pivot_wider(
+    id_cols = c(USUBJID, IDVARVAL),
+    names_from = QNAM,
+    values_from = QVAL
+  ) %>%
+  # ⚠️ 核心修改点 1：去掉 as.numeric，改为 as.character，统一为字符型
+  mutate(IDVARVAL = as.character(str_trim(IDVARVAL)))
+
+# 2.2 将 SUPPAE 合并回 AE，生成 ae_all
+ae_all <- ae_raw %>%
+  # ⚠️ 核心修改点 2：确保 AE 里的连接键也是字符型，并用 str_trim 去除可能存在的空格
+  mutate(AESEQ = as.character(str_trim(AESEQ))) %>%
+  left_join(
+    suppae_wide,
+    by = c("USUBJID", "AESEQ" = "IDVARVAL") 
+  )
+
+
+# 2.3 合并 ADSL，筛选 SAFFL='Y' 并获取治疗组、年龄、性别变量
+dlt <- ae_all %>%
+  filter(toupper(AEDLT) == "YES") %>%
+  # ⚠️ 核心修复：如果 ae_all 里意外包含了 SUBJID，先删除，防止 join 时重名
+  select(-any_of("SUBJID")) %>%
+  inner_join(
+    adsl_raw %>% 
+      filter(toupper(SAFFL) == "Y") %>% 
+      select(STUDYID, USUBJID, TRT01A, SUBJID, AGE, SEX),
+    by = c("STUDYID", "USUBJID")
+  )
+
+# 2.4 派生变量 (对应 SAS 的 || 与 strip 拼接)
+# 注意：使用 <br> 替代 SAS 中的 ~\n，这样在 HTML 网页中才会正确换行
+dlt <- dlt %>%
+  mutate(
+    DOSE_SUBJ = paste0(str_trim(TRT01A), "/<br>", str_trim(SUBJID)),
+    AGE_SEX = paste0(str_trim(AGE), "/", str_trim(SEX)),
+    SOCPT = paste0(str_trim(AESOC), "/<br>", str_trim(AEDECOD), "/<br>", str_trim(AETERM)),
+    
+    STDTCDY = ifelse(
+      !is.na(AESTDY),
+      paste0(str_trim(AESTDTC), "<br>(", str_trim(AESTDY), ")"),
+      str_trim(AESTDTC)
+    ),
+    
+    ENDTCDY = ifelse(
+      !is.na(AEENDY),
+      paste0(str_trim(AEENDTC), "<br>(", str_trim(AEENDY), ")"),
+      str_trim(AEENDTC)
+    )
+  ) %>%
+  # 排序 (对应 proc sort by DOSE_SUBJ AESPID)
+  arrange(DOSE_SUBJ, AESPID) %>%
+  # 选择最终需要的列
+  select(
+    DOSE_SUBJ, AGE_SEX, AESPID, SOCPT, STDTCDY, ENDTCDY, 
+    AEONGO, AEOUT, AETOXGR, AEREL, AEACN, AESER
+  )
+
+# ==============================================================================
+# 3. 生成最终表格
+# ==============================================================================
+
+col_labels <- c(
+  "Dose Group/<br>Subject ID",
+  "Age(Year)/<br>Gender",
+  "AE Number",
+  "System Organ<br>Class/<br>Preferred<br>Term/<br>Adverse<br>Event<sup>a</sup>",
+  "Start Date<br>(Day)",
+  "End Date<br>(Day)",
+  "Ongoing",
+  "Outcome",
+  "CTCAE<br>Grade<sup>b</sup>",
+  "Relationship<br>to JAB-23E73",
+  "Action Taken<br>with JAB-23E73",
+  "Serious<br>Events"
+)
+
+# 核心判断：如果数据为空，生成一个带有“No data available”的 HTML 表格
+if (nrow(dlt) == 0) {
+  
+  # 创建一个只有一行的数据框
+  empty_df <- data.frame(
+    Message = "No data available",
+    stringsAsFactors = FALSE
+  )
+  
+  # 用 kableExtra 渲染这个空表格，它会自动生成 HTML 表格代码
+  kbl(empty_df, col.names = NULL, align = "c", booktabs = TRUE) %>%
+    kable_styling(
+      bootstrap_options = c("condensed"), 
+      full_width = FALSE, 
+      position = "center"
+    ) %>%
+    row_spec(1, bold = TRUE) # 把这一行文字加粗
+    
+} else {
+  
+  # 有数据时的正常渲染
+  dlt %>%
+    kable(
+      col.names = col_labels,
+      escape = FALSE,      
+      booktabs = TRUE,
+      linesep = ""
+    ) %>%
+    kable_styling(
+      bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+      full_width = FALSE,
+      position = "center",
+      font_size = 11
+    ) %>%
+    column_spec(1, width = "1.2in") %>%
+    column_spec(4, width = "1.8in") %>%
+    column_spec(5:6, width = "1.0in") %>%
+    column_spec(10:11, width = "1.5in")
+}
+
+```
+

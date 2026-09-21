@@ -36,6 +36,11 @@ date: "`r Sys.Date()`"
 
 点击查看疗效图表。
 
+---
+
+## [📦 数据列表 →](./program/listing.html)
+
+点击查看数据列表。
 
 ---
 
