@@ -2,7 +2,7 @@ name: "R-Clinical"
 output_dir: "_site"
 
 navbar:
-  title: "RMD Website"
+  title: "R-Clinical"
   left:
     - text: "Home"
       href: index.html
