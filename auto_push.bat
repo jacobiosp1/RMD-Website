@@ -1,53 +1,52 @@
 @echo off
 
-:: 1. è®¾ç½®é¡¹ç›®è·¯å¾„å’Œæ—¥å¿—è·¯å¾„
+:: 1. ÉèÖÃÏîÄ¿Â·¾¶ºÍÈÕÖ¾Â·¾¶
 set PROJECT_PATH=D:\RMD Website
 set LOG_DIR=D:\R_Auto\logs
 set LOG_FILE=%LOG_DIR%\auto_push.log
 
-:: 2. åˆ›å»ºæ—¥å¿—ç›®å½•
+:: 2. ´´½¨ÈÕÖ¾Ä¿Â¼
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 
-:: 3. åˆ‡æ¢é¡¹ç›®ç›®å½•
+:: 3. ÇÐ»»ÏîÄ¿Ä¿Â¼
 cd /d "%PROJECT_PATH%"
 
-:: 4. æ£€æŸ¥æ˜¯å¦æœ‰æ”¹åŠ¨
+:: 4. ¼ì²éÊÇ·ñÓÐ¸Ä¶¯
 git status --porcelain > "%TEMP%\git_status.txt"
 for /f %%i in ("%TEMP%\git_status.txt") do set size=%%~zi
 del "%TEMP%\git_status.txt"
 
-:: æ²¡æœ‰æ”¹åŠ¨ç›´æŽ¥é€€å‡º
+:: Ã»ÓÐ¸Ä¶¯Ö±½ÓÍË³ö
 if %size% equ 0 exit /b 0
 
-:: 5. æ‰§è¡Œ Git æ“ä½œ
+:: 5. Ö´ÐÐ Git ²Ù×÷
 :: 5.1 git add
 git add . > nul 2>&1
 if %errorlevel% neq 0 (
-    echo [%date% %time%] å¤±è´¥ï¼šgit add å‡ºé”™ >> "%LOG_FILE%"
+    echo FAILED: git add >> "%LOG_FILE%"
     exit /b 1
 )
 
-:: 5.2 git commit 
+:: 5.2 git commit (Ìá½»ÐÅÏ¢ÒÀÈ»±£ÁôÖÐÎÄÊ±¼ä£¬ÒÔ±ã GitHub ÏÔÊ¾)
 git commit -m "Auto update: %date% %time%" > nul 2>&1
 if %errorlevel% neq 0 (
-    echo [%date% %time%] å¤±è´¥ï¼šgit commit å‡ºé”™ >> "%LOG_FILE%"
+    echo FAILED: git commit >> "%LOG_FILE%"
     exit /b 1
 )
-
 
 :: 5.3 git pull
 git pull --rebase origin HEAD > nul 2>&1
 if %errorlevel% neq 0 (
-    echo [%date% %time%] å¤±è´¥ï¼šgit pull å‡ºé”™ï¼ˆå¯èƒ½æœ‰å†²çªï¼‰ >> "%LOG_FILE%"
+    echo FAILED: git pull conflict >> "%LOG_FILE%"
     exit /b 1
 )
 
 :: 5.4 git push
 git push origin HEAD > nul 2>&1
 if %errorlevel% neq 0 (
-   echo [%date% %time%] å¤±è´¥ï¼šgit push å‡ºé”™ï¼ˆæ£€æŸ¥ç½‘ç»œæˆ–Tokenï¼‰ >> "%LOG_FILE%"
+   echo FAILED: git push >> "%LOG_FILE%"
     exit /b 1
 )
 
-:: 6. æˆåŠŸ
-echo [%date% %time%] æŽ¨é€æˆåŠŸ >> "%LOG_FILE%"
+:: 6. ³É¹¦
+echo SUCCESS: Pushed at %date% %time% >> "%LOG_FILE%"
