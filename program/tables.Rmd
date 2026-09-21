@@ -1,0 +1,433 @@
+---
+title: "总生存期汇总表"          
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: show     
+    df_print: paged
+---
+
+## t_os_ss_x.rtf
+
+
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(stringr)
+library(survival)
+library(knitr)
+library(kableExtra)
+
+# ==============================================================================
+# 1. 路径与配置 (替换原脚本第 1 节，移除本地目录创建逻辑)
+# ==============================================================================
+# 注意：如果 Rmd 在根目录，这里可能改为 "data/ADTTE.csv" 或 here::here("data", "ADTTE.csv")
+input_file <- "../data/ADTTE.csv"
+
+os_timelist <- c(3, 6, 9, 12, 15, 18, 21, 24)
+treatment_display_order <- NULL
+display_column_positions <- c(1, 2, 3, 5)
+report_group_labels <- c("Ib期CRC", "Weekly给药", "Bi-weekly给药", "CRC合计")
+
+table_title <- paste0("Table 14.2.3.1 ", "总生存期-所有晚期结直肠癌患者-安全性分析人群")
+data_extract_date <- "2025-08-01"
+data_cutoff_date  <- "2025-08-01"
+
+special_subject_footnote <- paste0(
+  "受试者112002属于Phase II CRC患者，仅服用了JAB-21822，",
+  "未使用西妥昔单抗治疗，因此按照西妥昔单抗Weekly和",
+  "Bi-weekly给药总结时不纳入，仅在合计中体现。"
+)
+
+crc_combined_label <- "CRC合计"
+total_group_label  <- "合计"
+
+# ==============================================================================
+# 2~4. 辅助函数 (原脚本第 3~4 节，直接原样复制，无需修改)
+# ==============================================================================
+
+parse_numeric_safely <- function(x) {
+  x <- stringr::str_trim(as.character(x))
+  x[x %in% c("", ".", "NA", "N/A", "NULL")] <- NA_character_
+  suppressWarnings(readr::parse_double(x, na = c("", ".", "NA", "N/A", "NULL")))
+}
+
+is_nonmissing_csv <- function(x) {
+  x <- stringr::str_trim(as.character(x))
+  !is.na(x) & !x %in% c("", ".", "NA", "N/A", "NULL")
+}
+
+sas_round_1 <- function(x) {
+  ifelse(is.na(x), NA_real_, floor(x * 10 + 0.5 + 1e-12) / 10)
+}
+
+format_1_decimal <- function(x) {
+  ifelse(is.na(x), NA_character_, sprintf("%.1f", sas_round_1(x)))
+}
+
+format_estimate_ci <- function(estimate, lower, upper, ne_text = "NE") {
+  estimate_text <- ifelse(is.na(estimate), ne_text, format_1_decimal(estimate))
+  lower_text <- ifelse(is.na(lower), ne_text, format_1_decimal(lower))
+  upper_text <- ifelse(is.na(upper), ne_text, format_1_decimal(upper))
+  paste0(estimate_text, " (", lower_text, ", ", upper_text, ")")
+}
+
+format_npct <- function(n, denominator) {
+  n <- ifelse(is.na(n), 0L, as.integer(n))
+  if (is.na(denominator) || denominator <= 0L) return(paste0(n, " (NE)"))
+  percentage <- 100 * n / denominator
+  paste0(n, " (", format_1_decimal(percentage), "%)")
+}
+
+get_strict_quantile_estimate <- function(fit, prob) {
+  target_survival <- 1 - prob
+  if (is.null(fit$time) || is.null(fit$surv) || length(fit$time) == 0L) return(NA_real_)
+  crossing_index <- which(fit$surv < target_survival)
+  if (length(crossing_index) == 0L) return(NA_real_)
+  fit$time[min(crossing_index)]
+}
+
+extract_survival_quantiles <- function(fit, probs = c(0.25, 0.50, 0.75)) {
+  empty_result <- tibble(percent = probs * 100, estimate = NA_real_, lower = NA_real_, upper = NA_real_)
+  quantile_result <- tryCatch(quantile(fit, probs = probs, conf.int = TRUE), error = function(e) NULL)
+  if (is.null(quantile_result)) return(empty_result)
+  
+  get_numeric_vector <- function(x, expected_length) {
+    if (is.null(x)) return(rep(NA_real_, expected_length))
+    x <- as.numeric(x)
+    if (length(x) < expected_length) x <- c(x, rep(NA_real_, expected_length - length(x)))
+    x[seq_len(expected_length)]
+  }
+  
+  lower_value <- get_numeric_vector(quantile_result$lower, length(probs))
+  upper_value <- get_numeric_vector(quantile_result$upper, length(probs))
+  estimate_value <- map_dbl(probs, ~ get_strict_quantile_estimate(fit = fit, prob = .x))
+  
+  tibble(percent = probs * 100, estimate = estimate_value, lower = lower_value, upper = upper_value)
+}
+
+calculate_km_quantiles <- function(data, time_var = "AVAL", status_var = "STATUS") {
+  empty_result <- tibble(percent = c(25, 50, 75), estimate = NA_real_, lower = NA_real_, upper = NA_real_, avalc = rep("NE (NE, NE)", 3))
+  if (nrow(data) == 0L) return(empty_result)
+  
+  analysis_data <- tibble(time = as.numeric(data[[time_var]]), status = as.numeric(data[[status_var]])) %>%
+    filter(!is.na(time), !is.na(status), time >= 0, status %in% c(0, 1))
+  
+  if (nrow(analysis_data) == 0L) return(empty_result)
+  
+  fit <- tryCatch(survfit(Surv(time, status) ~ 1, data = analysis_data, conf.type = "log-log", conf.int = 0.95), error = function(e) NULL)
+  if (is.null(fit)) return(empty_result)
+  
+  extract_survival_quantiles(fit = fit, probs = c(0.25, 0.50, 0.75)) %>%
+    mutate(avalc = format_estimate_ci(estimate = estimate, lower = lower, upper = upper))
+}
+
+calculate_survival_at_times <- function(data, times, time_var = "AVAL", status_var = "STATUS") {
+  analysis_data <- tibble(time = as.numeric(data[[time_var]]), status = as.numeric(data[[status_var]])) %>%
+    filter(!is.na(time), !is.na(status), time >= 0, status %in% c(0, 1))
+  
+  empty_result <- tibble(timelist = times, survival = NA_real_, lower = NA_real_, upper = NA_real_, avalc = "NR")
+  if (nrow(analysis_data) == 0L) return(empty_result)
+  
+  fit <- tryCatch(survfit(Surv(time, status) ~ 1, data = analysis_data, conf.type = "log-log", conf.int = 0.95), error = function(e) NULL)
+  if (is.null(fit)) return(empty_result)
+  
+  max_observed_time <- max(analysis_data$time, na.rm = TRUE)
+  
+  map_dfr(times, function(current_time) {
+    if (current_time > max_observed_time) {
+      return(tibble(timelist = current_time, survival = NA_real_, lower = NA_real_, upper = NA_real_, avalc = "NR"))
+    }
+    fit_summary <- tryCatch(summary(fit, times = current_time, extend = FALSE), error = function(e) NULL)
+    if (is.null(fit_summary) || length(fit_summary$surv) == 0L) {
+      return(tibble(timelist = current_time, survival = NA_real_, lower = NA_real_, upper = NA_real_, avalc = "NR"))
+    }
+    survival_value <- as.numeric(fit_summary$surv[1])
+    lower_value <- as.numeric(fit_summary$lower[1])
+    upper_value <- as.numeric(fit_summary$upper[1])
+    
+    if (is.na(survival_value)) {
+      display_value <- "NR"
+    } else if (survival_value == 0) {
+      display_value <- "0"
+    } else {
+      lower_text <- ifelse(is.na(lower_value), "NE", format_1_decimal(lower_value * 100))
+      upper_text <- ifelse(is.na(upper_value), "NE", format_1_decimal(upper_value * 100))
+      display_value <- paste0(format_1_decimal(survival_value * 100), " (", lower_text, ", ", upper_text, ")")
+    }
+    tibble(timelist = current_time, survival = survival_value, lower = lower_value, upper = upper_value, avalc = display_value)
+  })
+}
+
+# ==============================================================================
+# 5~15. 数据读取与处理 (原脚本核心部分，直接复制，仅数据读取方式修改)
+# ==============================================================================
+
+# 1. 检查文件
+if (!file.exists(input_file)) stop(paste0("未找到 ADTTE CSV 文件。\n预期位置：", input_file))
+
+# 2. 读取数据 (改用 read.csv 并强制字符，替代原来的 read_csv 逻辑)
+adtte_raw <- read.csv(
+  file = input_file,
+  stringsAsFactors = FALSE,
+  colClasses = "character", 
+  na.strings = c("", "NA", ".", "N/A", "NULL"),
+  check.names = FALSE
+)
+names(adtte_raw) <- toupper(str_trim(names(adtte_raw)))
+
+# 3. 验证变量
+required_vars <- c("USUBJID", "PARAMCD", "SAFFL", "STARTDT", "AVAL", "CNSR", "TRTGRPN", "TRTGRP", "COHORT", "EVNTDESC")
+missing_vars <- setdiff(required_vars, names(adtte_raw))
+if (length(missing_vars) > 0L) stop(paste0("ADTTE CSV缺少以下必要变量：\n", paste(missing_vars, collapse = ", ")))
+
+# 4. 准备数据
+adtte <- adtte_raw %>%
+  mutate(
+    USUBJID = str_trim(as.character(USUBJID)),
+    PARAMCD = str_trim(as.character(PARAMCD)),
+    SAFFL = str_trim(as.character(SAFFL)),
+    STARTDT = str_trim(as.character(STARTDT)),
+    TRTGRP = str_trim(as.character(TRTGRP)),
+    COHORT = str_trim(as.character(COHORT)),
+    EVNTDESC = str_trim(as.character(EVNTDESC)),
+    AVAL = parse_numeric_safely(AVAL),
+    CNSR = parse_numeric_safely(CNSR),
+    TRTGRPN = parse_numeric_safely(TRTGRPN)
+  ) %>%
+  filter(toupper(PARAMCD) == "OS", toupper(SAFFL) == "Y", is_nonmissing_csv(STARTDT))
+
+if (nrow(adtte) == 0L) stop("筛选 PARAMCD='OS', SAFFL='Y', STARTDT非缺失后没有记录。")
+
+invalid_cnsr <- adtte %>% filter(!is.na(CNSR), !CNSR %in% c(0, 1))
+if (nrow(invalid_cnsr) > 0L) stop(paste0("CNSR存在0和1之外的取值：", paste(sort(unique(invalid_cnsr$CNSR)), collapse = ", ")))
+
+# 5. 生成分析组
+adtte_original <- adtte %>% mutate(ANALYSIS_TRTGRPN = TRTGRPN)
+adtte_total <- adtte %>% mutate(ANALYSIS_TRTGRPN = 999)
+adtte_crc <- adtte %>%
+  filter(
+    str_detect(coalesce(TRTGRP, ""), fixed("CRC")) |
+      (str_detect(coalesce(TRTGRP, ""), fixed("其他")) & str_detect(coalesce(COHORT, ""), fixed("ACRC")))
+  ) %>%
+  mutate(ANALYSIS_TRTGRPN = 888)
+
+adtte_2 <- bind_rows(adtte_original, adtte_total, adtte_crc)
+
+# 6. 治疗组定义与显示顺序
+get_group_label <- function(data, group_id) {
+  if (group_id == 888) return(crc_combined_label)
+  if (group_id == 999) return(total_group_label)
+  labels <- data %>% filter(TRTGRPN == group_id) %>% pull(TRTGRP) %>% as.character() %>% str_trim() %>% na.omit() %>% unique()
+  labels <- labels[labels != ""]
+  if (length(labels) > 0L) return(labels[1])
+  paste0("治疗组 ", group_id)
+}
+
+original_groups <- adtte %>% filter(!is.na(TRTGRPN)) %>% distinct(TRTGRPN) %>% arrange(TRTGRPN) %>% pull(TRTGRPN)
+available_groups <- unique(c(original_groups, if (nrow(adtte_crc) > 0L) 888 else numeric(0), 999))
+
+if (is.null(treatment_display_order)) {
+  treatment_display_order <- available_groups
+} else {
+  treatment_display_order <- intersect(treatment_display_order, available_groups)
+}
+
+group_metadata <- tibble(group_id = treatment_display_order) %>%
+  mutate(
+    source_label = map_chr(group_id, ~ get_group_label(adtte, .x)),
+    denominator = map_int(group_id, function(current_group) {
+      adtte_2 %>% filter(ANALYSIS_TRTGRPN == current_group) %>% summarise(N = n_distinct(USUBJID)) %>% pull(N)
+    }),
+    original_position = row_number()
+  )
+
+valid_positions <- display_column_positions[display_column_positions <= nrow(group_metadata)]
+if (length(valid_positions) != length(display_column_positions)) stop("当前数据中的治疗组数量不足，无法选择位置。")
+
+group_metadata <- group_metadata %>%
+  filter(original_position %in% valid_positions) %>%
+  arrange(match(original_position, valid_positions)) %>%
+  mutate(output_position = row_number(), column_name = paste0("GROUP_", output_position))
+
+if (nrow(group_metadata) != 4L) stop(paste0("目标表格要求4个治疗组列，当前选择后为", nrow(group_metadata), "列。"))
+group_metadata$report_label <- report_group_labels
+
+crc_n <- adtte_2 %>% filter(ANALYSIS_TRTGRPN %in% c(2, 3)) %>% summarise(N = n_distinct(USUBJID)) %>% pull(N)
+
+# 7. 事件和删失汇总
+event_summary_long <- map_dfr(seq_len(nrow(group_metadata)), function(i) {
+  current_group <- group_metadata$group_id[i]
+  current_column <- group_metadata$column_name[i]
+  current_denominator <- group_metadata$denominator[i]
+  current_data <- adtte_2 %>% filter(ANALYSIS_TRTGRPN == current_group)
+  
+  n_event <- current_data %>% filter(CNSR == 0) %>% summarise(N = n_distinct(USUBJID)) %>% pull(N)
+  n_death <- current_data %>% filter(CNSR == 0, str_trim(coalesce(EVNTDESC, "")) == "死亡") %>% summarise(N = n_distinct(USUBJID)) %>% pull(N)
+  n_censor <- current_data %>% filter(CNSR == 1) %>% summarise(N = n_distinct(USUBJID)) %>% pull(N)
+  
+  tibble(
+    VARID = 1L, STATID = 1:3,
+    ROW_LABEL = c("事件", "    死亡", "删失"),
+    COLUMN_NAME = current_column,
+    VALUE = c(format_npct(n_event, current_denominator), format_npct(n_death, current_denominator), format_npct(n_censor, current_denominator))
+  )
+})
+event_summary <- event_summary_long %>% pivot_wider(id_cols = c(VARID, STATID, ROW_LABEL), names_from = COLUMN_NAME, values_from = VALUE)
+
+# 8. OS 四分位数
+os_quantiles_long <- map_dfr(seq_len(nrow(group_metadata)), function(i) {
+  current_group <- group_metadata$group_id[i]
+  current_column <- group_metadata$column_name[i]
+  current_data <- adtte_2 %>% filter(ANALYSIS_TRTGRPN == current_group) %>%
+    mutate(STATUS = case_when(CNSR == 0 ~ 1, CNSR == 1 ~ 0, TRUE ~ NA_real_))
+  
+  calculate_km_quantiles(current_data) %>%
+    mutate(
+      VARID = 4L, STATID = match(percent, c(25, 50, 75)),
+      ROW_LABEL = case_when(
+        percent == 25 ~ "    25%分位数（95% CI）",
+        percent == 50 ~ "    中位数（95% CI）",
+        percent == 75 ~ "    75%分位数（95% CI）"
+      ),
+      COLUMN_NAME = current_column, VALUE = avalc
+    ) %>% select(VARID, STATID, ROW_LABEL, COLUMN_NAME, VALUE)
+})
+os_quantiles <- os_quantiles_long %>% pivot_wider(id_cols = c(VARID, STATID, ROW_LABEL), names_from = COLUMN_NAME, values_from = VALUE)
+os_header <- tibble(VARID = 4L, STATID = 0L, ROW_LABEL = "总生存期（月） [1]")
+for (current_column in group_metadata$column_name) os_header[[current_column]] <- ""
+os_section <- bind_rows(os_header, os_quantiles)
+
+# 9. OS 率
+os_rate_long <- map_dfr(seq_len(nrow(group_metadata)), function(i) {
+  current_group <- group_metadata$group_id[i]
+  current_column <- group_metadata$column_name[i]
+  current_data <- adtte_2 %>% filter(ANALYSIS_TRTGRPN == current_group) %>%
+    mutate(STATUS = case_when(CNSR == 0 ~ 1, CNSR == 1 ~ 0, TRUE ~ NA_real_))
+  
+  calculate_survival_at_times(data = current_data, times = os_timelist) %>%
+    mutate(
+      VARID = 5L, STATID = match(timelist, os_timelist),
+      ROW_LABEL = paste0("    ", timelist, "个月（95% CI）"),
+      COLUMN_NAME = current_column, VALUE = avalc
+    ) %>% select(VARID, STATID, ROW_LABEL, COLUMN_NAME, VALUE)
+})
+os_rate <- os_rate_long %>% pivot_wider(id_cols = c(VARID, STATID, ROW_LABEL), names_from = COLUMN_NAME, values_from = VALUE)
+os_rate_header <- tibble(VARID = 5L, STATID = 0L, ROW_LABEL = "总生存率（%）[1]")
+for (current_column in group_metadata$column_name) os_rate_header[[current_column]] <- ""
+os_rate_section <- bind_rows(os_rate_header, os_rate)
+
+# 10. 反向 KM 随访时间
+followup_quantiles_long <- map_dfr(seq_len(nrow(group_metadata)), function(i) {
+  current_group <- group_metadata$group_id[i]
+  current_column <- group_metadata$column_name[i]
+  current_data <- adtte_2 %>% filter(ANALYSIS_TRTGRPN == current_group) %>%
+    mutate(STATUS = case_when(CNSR == 1 ~ 1, CNSR == 0 ~ 0, TRUE ~ NA_real_))
+  
+  calculate_km_quantiles(current_data) %>%
+    mutate(
+      VARID = 6L, STATID = match(percent, c(25, 50, 75)),
+      ROW_LABEL = case_when(
+        percent == 25 ~ "    25%分位数（95% CI）",
+        percent == 50 ~ "    中位数（95% CI）",
+        percent == 75 ~ "    75%分位数（95% CI）"
+      ),
+      COLUMN_NAME = current_column, VALUE = avalc
+    ) %>% select(VARID, STATID, ROW_LABEL, COLUMN_NAME, VALUE)
+})
+followup_quantiles <- followup_quantiles_long %>% pivot_wider(id_cols = c(VARID, STATID, ROW_LABEL), names_from = COLUMN_NAME, values_from = VALUE)
+followup_header <- tibble(VARID = 6L, STATID = 0L, ROW_LABEL = "总生存期随访时间（月） [1]")
+for (current_column in group_metadata$column_name) followup_header[[current_column]] <- ""
+followup_section <- bind_rows(followup_header, followup_quantiles)
+
+# 11. 合并最终报表数据
+final_analysis <- bind_rows(event_summary, os_section, os_rate_section, followup_section) %>% arrange(VARID, STATID)
+
+for (current_column in group_metadata$column_name) {
+  final_analysis[[current_column]] <- ifelse(
+    final_analysis$STATID != 0 & (is.na(final_analysis[[current_column]]) | final_analysis[[current_column]] == ""),
+    "0", final_analysis[[current_column]]
+  )
+}
+
+# 12. 增加章节之间的空行
+section_ids <- unique(final_analysis$VARID)
+final_with_blank_rows <- map_dfr(seq_along(section_ids), function(i) {
+  current_varid <- section_ids[i]
+  section_data <- final_analysis %>% filter(VARID == current_varid)
+  if (i < length(section_ids)) {
+    blank_row <- tibble(VARID = current_varid + 0.5, STATID = 999L, ROW_LABEL = "")
+    for (current_column in group_metadata$column_name) blank_row[[current_column]] <- ""
+    bind_rows(section_data, blank_row)
+  } else {
+    section_data
+  }
+})
+
+final_display <- final_with_blank_rows %>% select(ROW_LABEL, all_of(group_metadata$column_name))
+
+# ==============================================================================
+# 16~19. 渲染 HTML 表格 (替换 flextable 逻辑)
+# ==============================================================================
+
+# 1. 准备列名 (注意将 \n 替换为 HTML 的 <br>)
+column_labels <- paste0(group_metadata$report_label, "<br>(N=", group_metadata$denominator, ")")
+names(final_display) <- c("项目", column_labels)
+
+# 2. 跨列表头
+cross_header_text <- paste0("II期 CRC<br>(N=", crc_n, ")")
+
+# 3. 脚注
+footnote_lines <- c(
+  "以每组受试者人数为分母计算百分数。",
+  "[1]：基于Kaplan-Meier估计。"
+)
+if (exists("special_subject_footnote") && !is.null(special_subject_footnote) && nzchar(special_subject_footnote)) {
+  footnote_lines <- c(footnote_lines, special_subject_footnote)
+}
+footnote_lines <- c(footnote_lines, paste0("数据提取时间：", data_extract_date, "；数据截止时间：", data_cutoff_date))
+
+# 4. 使用 kableExtra 输出
+final_display %>%
+  kable(
+    caption = table_title,
+    align = c("l", rep("c", ncol(final_display) - 1)),
+    escape = FALSE,
+    booktabs = TRUE,
+    linesep = ""
+  ) %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = FALSE,
+    position = "center",
+    font_size = 12
+  ) %>%
+  add_header_above(
+    header = c(" " = 1, " " = 1, cross_header_text = 2, " " = 1),
+    bold = TRUE,
+    escape = FALSE
+  ) %>%
+  footnote(
+    general_title = "注：",
+    general = footnote_lines,
+    footnote_as_chunk = TRUE,
+    escape = FALSE
+  ) %>%
+  column_spec(1, width = "2.7in") %>%
+  column_spec(2:5, width = "1.6in") %>%
+  row_spec(
+    row = which(final_with_blank_rows$STATID == 0),
+    bold = TRUE
+  )
+
+
+
+```
+

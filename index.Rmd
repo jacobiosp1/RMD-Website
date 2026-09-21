@@ -32,6 +32,12 @@ date: "`r Sys.Date()`"
 
 ---
 
+## [📦 疗效图表 →](./program/tables.html)
+
+点击查看疗效图表。
+
+
+---
 
 ## [📧 联系我们 →](./program/contact.html)
 
