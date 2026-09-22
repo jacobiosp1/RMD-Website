@@ -63,9 +63,8 @@ jobs:
               directory = '_site/',                
               password = Sys.getenv('SITE_PASSWORD'),
               short = TRUE,             
-              recursive = TRUE,
-              share = 'site',
-              share_remember = TRUE
+              recursive = TRUE
+             
             )
           " 
 
