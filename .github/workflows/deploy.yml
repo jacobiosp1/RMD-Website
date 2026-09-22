@@ -60,7 +60,7 @@ jobs:
             library(staticryptR)
             staticryptr(
               files = '_site/',               
-              directory = '_site/',                
+              directory = '.',                
               password = Sys.getenv('SITE_PASSWORD'),
               short = TRUE,             
               recursive = TRUE
@@ -71,6 +71,10 @@ jobs:
       - name: Check staticryptR API
         run: |
           Rscript -e "library(staticryptR); print(args(staticryptr))"
+          
+        - name: Verify encryption
+          run: |
+            grep -q "staticrypt" _site/index.html && echo "✅ 加密成功" || echo "❌ 加密失败"
 
       # ---------- 7. 部署到 GitHub Pages ----------
       - name: Setup Pages
