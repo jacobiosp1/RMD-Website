@@ -51,21 +51,22 @@ jobs:
         run: Rscript render_program.R
 
         # ---------- 加密整个 _site 文件夹 ----------
-      - name: Encrypt site with staticryptR
+            - name: Encrypt site with staticryptR
         env:
-          # 从 GitHub Secrets 读取密码
           SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
         run: |
-          Rscript -e "
-            library(staticryptR)
-            staticryptr(
-              files = '_site/',               
-              directory = '.',                
-              password = Sys.getenv('SITE_PASSWORD'),
-              short = TRUE,             
-              recursive = TRUE
-             
-            )" 
+          Rscript - <<'EOF'
+          library(staticryptR)
+          staticryptr(
+            files = '_site/',
+            directory = '.',
+            password = Sys.getenv('SITE_PASSWORD'),
+            short = TRUE,
+            recursive = TRUE
+          )
+          EOF
+          
+          
       - name: Check staticryptR API
         run: |
           Rscript -e "library(staticryptR); print(args(staticryptr))"
