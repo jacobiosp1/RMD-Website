@@ -65,9 +65,7 @@ jobs:
               short = TRUE,             
               recursive = TRUE
              
-            )
-          " 
-
+            )" 
       - name: Check staticryptR API
         run: |
           Rscript -e "library(staticryptR); print(args(staticryptr))"
