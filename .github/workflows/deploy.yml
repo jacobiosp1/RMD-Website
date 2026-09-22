@@ -60,7 +60,7 @@ jobs:
             library(staticryptR)
             staticryptr(
               files = '_site/',               
-              directory = '.',                
+              directory = '_site/',                
               password = Sys.getenv('SITE_PASSWORD'),
               short = TRUE,             
               recursive = TRUE,
