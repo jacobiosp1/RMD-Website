@@ -4,9 +4,9 @@ output_dir: "_site"
 navbar:
   title: "R-Clinical"
   left:
-    - text: "Home"
+    - text: "主页"
       href: index.html
-    - text: "About"
+    - text: "信息介绍"
       href: about.html
  
       
