@@ -7,3 +7,4 @@ title: "信息介绍"
 - 动态数据图表
 - 数据来源：SQL 数据库
 - 项目移到X盘下RWEBSITE
+- 密码：Jab2026xuan!!
