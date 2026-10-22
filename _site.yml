@@ -1,0 +1,38 @@
+name: "R-Clinical"
+output_dir: "_site"
+
+navbar:
+  title: "R-Clinical"
+  left:
+    - text: "主页"
+      href: index.html
+    - text: "信息介绍"
+      href: about.html
+ 
+      
+    - text: "数据分析"
+      href: program/analysis.html
+    - text: "数据报告"
+      href: program/reports.html
+    - text: "数据图表"
+      href: program/figures.html
+    - text: "疗效图表"
+      href: program/tables.html
+    - text: "数据列表"
+      href: program/listing.html
+    - text: "联系我们"
+      href: program/contact.html
+      
+
+  right:
+    - text: "GitHub"
+      href: https://github.com/jacobiosp1/RMD-Website
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: show
+    df_print: paged

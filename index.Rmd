@@ -1,0 +1,51 @@
+---
+title: "R语言临床分析"
+author: "Jab-SP"
+date: "`r Sys.Date()`"
+---
+
+
+> 欢迎来到R-Clinical
+
+点击下方板块，跳转到详细页面：
+
+---
+
+
+## [📊 数据分析 →](./program/analysis.html)
+
+点击查看详细的数据分析结果。
+
+---
+
+## [📊 数据报告 →](./program/reports.html)
+
+点击查看数据报告。
+
+
+---
+
+## [📦 数据图表 →](./program/figures.html)
+
+点击查看数据图表。
+
+
+---
+
+## [📦 疗效图表 →](./program/tables.html)
+
+点击查看疗效图表。
+
+---
+
+## [📦 数据列表 →](./program/listing.html)
+
+点击查看数据列表。
+
+---
+
+## [📧 联系我们 →](./program/contact.html)
+
+如有疑问，欢迎联系我们。
+
+---
