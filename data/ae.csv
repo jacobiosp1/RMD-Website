@@ -114,26 +114,32 @@ TEST,014,2,1,anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHAN
 TEST,014,3,2,anemia,Anaemia,Blood and lymphatic system disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-07-06,2026-07-12,22,28,014
 TEST,014,4,3,anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-07-13,2026-09-13,29,91,014
 TEST,014,5,4,anemia,Anaemia,Blood and lymphatic system disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-09-14,2026-09-20,92,98,014
-TEST,014,6,5,anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-21,,99,,014
-TEST,014,7,1,albumin decreased,Blood albumin decreased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-07-13,,29,,014
-TEST,014,8,1,alk phos increased,Blood alkaline phosphatase increased,Investigations,N,DOSE NOT CHANGED,Not Related,,1,2026-06-15,2026-06-29,1,15,014
-TEST,014,9,1,weight gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-06-15,2026-07-31,1,47,014
-TEST,014,10,1,pain,Pain,General disorders and administration site conditions,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,32,,014
-TEST,014,11,1,calcium increase,,,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2026-09-14,2026-09-20,92,98,014
-TEST,014,12,1,albumin decrease,,,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-14,,92,,014
-TEST,014,13,1,Ascites,Ascites,Gastrointestinal disorders,Y,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-07-02,,18,,014
-TEST,014,14,1,TSH increase,Blood thyroid stimulating hormone increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-09-14,2026-09-20,92,98,014
-TEST,014,15,1,edema - b/l legs,,,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-14,,92,,014
-TEST,014,16,1,lightheadedness,Dizziness,Nervous system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-10,,88,,014
-TEST,014,17,1,Hyperkalemia,Hyperkalaemia,Metabolism and nutrition disorders,Y,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,4,2026-10-12,,120,,014
-TEST,014,18,1,Acute kidney injury,Acute kidney injury,Renal and urinary disorders,Y,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,3,2026-10-12,,120,,014
-TEST,014,19,1,bloating,Abdominal distension,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-06-22,,8,,014
-TEST,014,20,1,diarrhea,Diarrhoea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-25,,11,,014
-TEST,014,21,1,dry mouth,Dry mouth,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-10,,26,,014
-TEST,014,22,1,Pain - flank and back,Back pain,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07,,,,014
-TEST,014,23,1,Pain - at drain site,Wound complication,"Injury, poisoning and procedural complications",N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-15,,31,,014
-TEST,014,24,1,black stool,Faeces discoloured,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-25,,41,,014
-TEST,014,25,1,hypotension,Hypotension,Vascular disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-07-27,,43,,014
+TEST,014,6,5,anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-21,2026-10-11,99,119,014
+TEST,014,7,6,anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-10-12,2026-10-15,120,123,014
+TEST,014,8,7,anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-10-16,,124,,014
+TEST,014,9,1,albumin decreased,Blood albumin decreased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-07-13,,29,,014
+TEST,014,10,1,alk phos increased,Blood alkaline phosphatase increased,Investigations,N,DOSE NOT CHANGED,Not Related,,1,2026-06-15,2026-06-29,1,15,014
+TEST,014,11,1,weight gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-06-15,2026-07-31,1,47,014
+TEST,014,12,1,pain,Pain,General disorders and administration site conditions,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,32,,014
+TEST,014,13,1,calcium increase,,,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2026-09-14,2026-09-20,92,98,014
+TEST,014,14,1,albumin decrease,,,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-14,2026-10-11,92,119,014
+TEST,014,15,2,albumin decrease,,,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-10-12,,120,,014
+TEST,014,16,1,Ascites,Ascites,Gastrointestinal disorders,Y,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-07-02,,18,,014
+TEST,014,17,1,TSH increase,Blood thyroid stimulating hormone increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-09-14,2026-09-20,92,98,014
+TEST,014,18,1,edema - b/l legs,,,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-14,,92,,014
+TEST,014,19,1,lightheadedness,Dizziness,Nervous system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-10,,88,,014
+TEST,014,20,1,Hyperkalemia,Hyperkalaemia,Metabolism and nutrition disorders,Y,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,4,2026-10-12,2026-10-16,120,124,014
+TEST,014,21,1,Acute kidney injury,Acute kidney injury,Renal and urinary disorders,Y,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-10-12,,120,,014
+TEST,014,22,1,creatinine increased,Blood creatinine increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-10-12,2026-10-15,120,123,014
+TEST,014,23,1,hypocalcemia,Hypocalcaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-10-12,,120,,014
+TEST,014,24,1,vomiting,Vomiting,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-10-18,,126,,014
+TEST,014,25,1,bloating,Abdominal distension,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-06-22,,8,,014
+TEST,014,26,1,diarrhea,Diarrhoea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-25,,11,,014
+TEST,014,27,1,dry mouth,Dry mouth,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-10,,26,,014
+TEST,014,28,1,Pain - flank and back,Back pain,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07,,,,014
+TEST,014,29,1,Pain - at drain site,Wound complication,"Injury, poisoning and procedural complications",N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-15,,31,,014
+TEST,014,30,1,black stool,Faeces discoloured,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-25,,41,,014
+TEST,014,31,1,hypotension,Hypotension,Vascular disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-07-27,,43,,014
 TEST,015,1,1,hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-08-20,,15,,015
 TEST,015,2,1,bladder infection,,,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-16,,42,,015
 TEST,015,3,1,potassium decreased,Blood potassium decreased,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,3,2026-08-27,2026-09-09,22,35,015
@@ -185,31 +191,30 @@ TEST,002,3,1,Pruritus,Pruritus,Skin and subcutaneous tissue disorders,N,DOSE NOT
 TEST,002,4,1,Groin Pain,Groin pain,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-11-05,,8,,002
 TEST,002,5,1,Anemia,Anaemia,Blood and lymphatic system disorders,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,3,2025-12-04,2025-12-15,37,48,002
 TEST,002,6,2,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2025-12-15,2026-01-16,48,80,002
-TEST,002,7,1,Abdominal Pain,Abdominal pain,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-05,,38,,002
-TEST,002,8,1,TSH Increased,Blood thyroid stimulating hormone increased,Investigations,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-10,,43,,002
-TEST,002,9,1,Alkaline Phosphatase Increased,Blood alkaline phosphatase increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2025-12-15,,48,,002
-TEST,002,10,1,Left Leg Pain,Pain in extremity,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-22,,55,,002
-TEST,002,11,1,Anorexia,Decreased appetite,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-29,,62,,002
-TEST,002,12,1,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2025-11-12,2025-12-15,15,48,002
-TEST,002,13,2,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-15,,48,,002
-TEST,002,14,1,Creatinine Increased,Blood creatinine increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-29,,62,,002
-TEST,002,15,1,Cognitive Disturbance,Cognitive disorder,Nervous system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-29,,62,,002
-TEST,002,16,1,Community- Acquired Pneumonia,Pneumonia,Infections and infestations,Y,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED WITH SEQUELAE,4,2026-01-15,2026-01-25,79,89,002
-TEST,002,17,1,Sepsis,Sepsis,Infections and infestations,Y,DRUG INTERRUPTED,Not Related,FATAL,5,2026-01-16,2026-01-28,80,92,002
-TEST,002,18,1,Urinary Tract Infection,Urinary tract infection,Infections and infestations,N,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED,3,2026-01-15,2026-01-25,79,89,002
-TEST,002,19,1,Lower Back Pain,Back pain,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-15,,79,,002
-TEST,002,20,1,Dyspnea,Dyspnoea,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-01-15,,79,,002
-TEST,002,21,1,Encephalopathy,Encephalopathy,Nervous system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-01-16,,80,,002
-TEST,002,22,1,Generalized Edema (Anasarca),Generalised oedema,General disorders and administration site conditions,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-01-15,,79,,002
+TEST,002,7,3,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-01-16,,80,,002
+TEST,002,8,1,Abdominal Pain,Abdominal pain,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-05,,38,,002
+TEST,002,9,1,Left Leg Pain,Pain in extremity,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-22,,55,,002
+TEST,002,10,1,Anorexia,Decreased appetite,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-29,,62,,002
+TEST,002,11,1,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2025-11-12,2025-12-15,15,48,002
+TEST,002,12,2,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-15,,48,,002
+TEST,002,13,1,Creatinine Increased,Blood creatinine increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-29,,62,,002
+TEST,002,14,1,Cognitive Disturbance,Cognitive disorder,Nervous system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-29,,62,,002
+TEST,002,15,1,Community- Acquired Pneumonia,Pneumonia,Infections and infestations,Y,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED WITH SEQUELAE,4,2026-01-15,2026-01-25,79,89,002
+TEST,002,16,1,Sepsis,Sepsis,Infections and infestations,Y,DRUG INTERRUPTED,Not Related,FATAL,5,2026-01-16,2026-01-28,80,92,002
+TEST,002,17,1,Urinary Tract Infection,Urinary tract infection,Infections and infestations,N,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED,3,2026-01-15,2026-01-25,79,89,002
+TEST,002,18,1,Lower Back Pain,Back pain,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-15,,79,,002
+TEST,002,19,1,Dyspnea,Dyspnoea,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-01-15,,79,,002
+TEST,002,20,1,Encephalopathy,Encephalopathy,Nervous system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-01-16,,80,,002
+TEST,002,21,1,Generalized Edema (Anasarca),Generalised oedema,General disorders and administration site conditions,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-01-15,,79,,002
+TEST,002,22,1,Bilateral Lower Limb Edema,Oedema peripheral,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-11-03,,6,,002
 TEST,002,23,1,Right Atrial Mural Thrombus,Cardiac ventricular thrombosis,Cardiac disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-01-20,,84,,002
 TEST,002,24,1,Hypotension,Hypotension,Vascular disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-01-15,,79,,002
 TEST,002,25,1,insomnia,Insomnia,Psychiatric disorders,N,NOT APPLICABLE,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-01-16,,80,,002
 TEST,002,26,1,Weight Gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2025-11-12,2025-12-09,15,42,002
 TEST,002,27,2,Weight Gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2025-12-10,2025-12-14,43,47,002
 TEST,002,28,3,Weight Gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2025-12-15,2025-12-28,48,61,002
-TEST,002,29,1,Nausea,Nausea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-10-29,,1,,002
+TEST,002,29,1,Nausea,Nausea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2025-10-29,,1,,002
 TEST,002,30,1,Bilateral Paresthesia,Paraesthesia,Nervous system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-11-03,,6,,002
-TEST,002,31,1,AST Increased,Aspartate aminotransferase increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2025-11-12,2025-12-10,15,43,002
 TEST,005,1,1,Nausea,Nausea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-12,2026-05-02,1,80,005
 TEST,005,2,2,Nausea,Nausea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-05-02,2026-05-11,80,89,005
 TEST,005,3,3,Nausea,Nausea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-05-11,,89,,005
@@ -280,13 +285,13 @@ TEST,009,4,1,Neutrophil Count Decreased,Neutrophil count decreased,Investigation
 TEST,009,5,1,Neutrophil count Decreased,Neutrophil count decreased,Investigations,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,3,2026-07-14,2026-07-18,37,41,009
 TEST,009,6,1,Generalized Muscle Weakness,Muscular weakness,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-07-09,2026-07-30,32,53,009
 TEST,009,7,1,Edema - Face,Face oedema,General disorders and administration site conditions,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-23,,46,,009
-TEST,011,1,1,Bloating,Abdominal distension,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-08,,,,011
-TEST,011,2,1,Dizziness,Dizziness,Nervous system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-14,,,,011
-TEST,011,3,1,Anorexia,Decreased appetite,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-18,,,,011
-TEST,011,4,1,Edema Trunk,,,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-21,,,,011
-TEST,011,5,1,Colitis,Colitis,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,RECOVERING/RESOLVING,1,2026-09-22,,,,011
-TEST,011,6,1,Ascites,Ascites,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-30,,,,011
-TEST,011,7,1,Edema Limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-30,,,,011
+TEST,011,1,1,Bloating,Abdominal distension,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-08,,7,,011
+TEST,011,2,1,Dizziness,Dizziness,Nervous system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-14,,13,,011
+TEST,011,3,1,Anorexia,Decreased appetite,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-18,,17,,011
+TEST,011,4,1,Edema Trunk,,,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-21,,20,,011
+TEST,011,5,1,Colitis,Colitis,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,RECOVERING/RESOLVING,1,2026-09-22,,21,,011
+TEST,011,6,1,Ascites,Ascites,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-30,,29,,011
+TEST,011,7,1,Edema Limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-30,,29,,011
 TEST,001,1,1,Nausea,Nausea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-09-17,,1,,001
 TEST,001,2,1,Diarrhea,Diarrhoea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-09-28,,12,,001
 TEST,001,3,1,Vomiting,Vomiting,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-10-08,,22,,001
@@ -353,6 +358,9 @@ TEST,007,7,1,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders
 TEST,007,8,1,Insomnia,Insomnia,Psychiatric disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-10-01,,15,,007
 TEST,007,9,1,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-10-08,,22,,007
 TEST,007,10,1,Hypokalemia,Hypokalaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-10-08,,22,,007
+TEST,008,1,1,Dry mouth,Dry mouth,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,,2026-10-15,,,,008
+TEST,008,2,1,Dry Eye,Dry eye,Eye disorders,N,DOSE NOT CHANGED,,NOT RECOVERED/NOT RESOLVED,,2026-10-15,,,,008
+TEST,008,3,1,Fever,Pyrexia,General disorders and administration site conditions,N,DOSE NOT CHANGED,,RECOVERED/RESOLVED,,2026-10-15,2026-10-15,,,008
 TEST,001,1,1,Diarrhea,Diarrhoea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2025-11-06,2025-11-17,1,12,001
 TEST,001,2,1,Nausea,Nausea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2025-11-06,2025-12-16,1,41,001
 TEST,001,3,1,Abdominal pain,Abdominal pain,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2025-11-06,2026-02-12,1,99,001
@@ -368,77 +376,89 @@ TEST,001,12,2,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorder
 TEST,001,13,1,Ascites,Ascites,Gastrointestinal disorders,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,2,2025-12-03,2026-01-28,28,84,001
 TEST,001,14,2,Ascites,Ascites,Gastrointestinal disorders,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,3,2026-01-29,2026-02-19,85,106,001
 TEST,001,15,1,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,2,2025-12-03,2026-01-28,28,84,001
-TEST,001,16,2,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,3,2026-01-29,2026-02-11,85,98,001
-TEST,001,17,3,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,2,2026-02-12,2026-02-19,99,106,001
-TEST,001,18,1,Dyspnea,Dyspnoea,"Respiratory, thoracic and mediastinal disorders",N,DOSE REDUCED,Related,RECOVERED/RESOLVED,2,2025-12-03,2026-02-12,28,99,001
-TEST,001,19,1,Weight gain,Weight increased,Investigations,N,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED,2,2025-12-03,2025-12-11,28,36,001
-TEST,001,20,1,Weight gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2025-12-16,2026-01-28,41,84,001
-TEST,001,21,2,Weight gain,Weight increased,Investigations,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,3,2026-01-29,2026-02-11,85,98,001
-TEST,001,22,3,Weight gain,Weight increased,Investigations,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,2,2026-02-12,2026-02-19,99,106,001
-TEST,001,23,1,Hyperglycemia,Hyperglycaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2025-12-11,2026-01-29,36,85,001
-TEST,001,24,1,Hyperkalemia,Hyperkalaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2025-12-16,2026-01-08,41,64,001
-TEST,001,25,1,Alkaline phosphatase increased,Blood alkaline phosphatase increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2025-12-16,2026-02-08,41,95,001
-TEST,001,26,1,Activated partial thromboplastin time prolonged,Activated partial thromboplastin time prolonged,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-01-08,2026-02-19,64,106,001
-TEST,001,27,1,Chronic kidney disease,Chronic kidney disease,Renal and urinary disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-29,2026-04-01,85,147,001
-TEST,001,28,2,Chronic kidney disease,Chronic kidney disease,Renal and urinary disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-04-02,2026-04-21,148,167,001
-TEST,001,29,3,Chronic kidney disease,Chronic kidney disease,Renal and urinary disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-04-22,,168,,001
-TEST,001,30,1,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",N,DOSE REDUCED,Related,RECOVERED/RESOLVED,3,2026-01-29,2026-02-11,85,98,001
-TEST,001,31,2,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-02-12,2026-04-22,99,168,001
-TEST,001,32,1,Genital edema,Oedema genital,Reproductive system and breast disorders,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,3,2026-01-29,2026-02-11,85,98,001
-TEST,001,33,2,Genital edema,Oedema genital,Reproductive system and breast disorders,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,2,2026-02-12,2026-02-18,99,105,001
-TEST,001,34,3,Genital edema,Oedema genital,Reproductive system and breast disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-02-19,2026-04-02,106,148,001
-TEST,001,35,1,Parathyroid hormone increased,Blood parathyroid hormone increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-01-29,,85,,001
-TEST,001,36,1,Arthralgia,Arthralgia,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-02-06,2026-02-18,93,105,001
-TEST,001,37,2,Arthralgia,Arthralgia,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-19,,106,,001
-TEST,001,38,1,Nail discoloration,Nail discolouration,Skin and subcutaneous tissue disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-02-19,2026-06-24,106,231,001
-TEST,001,39,1,Back pain,Back pain,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-19,2026-03-11,106,126,001
-TEST,001,40,2,Back pain,Back pain,Musculoskeletal and connective tissue disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-12,2026-04-01,127,147,001
-TEST,001,41,3,Back pain,Back pain,Musculoskeletal and connective tissue disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-04-02,,148,,001
-TEST,001,42,1,Insomnia,Insomnia,Psychiatric disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2026-03-12,2026-05-14,127,190,001
-TEST,001,43,1,Activated partial thromboplastin time prolonged,Activated partial thromboplastin time prolonged,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-03-12,2026-04-22,127,168,001
-TEST,001,44,1,Lymphocyte count decreased,Lymphocyte count decreased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-04-02,2026-05-14,148,190,001
-TEST,001,45,1,Dehydration,Dehydration,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-04-22,2026-06-03,168,210,001
-TEST,001,46,2,Dehydration,Dehydration,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-04,,211,,001
-TEST,001,47,1,Hypermagnesemia,Hypermagnesaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,,2026-06-04,,211,001
-TEST,001,48,1,Alkaline phosphatase increased,Blood alkaline phosphatase increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-04-22,2026-05-14,168,190,001
-TEST,001,49,1,Creatine increased,Blood creatine increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-04-22,,168,,001
-TEST,001,50,1,Weight loss,Weight decreased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-04-22,,168,,001
-TEST,001,51,1,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-05-14,,190,,001
-TEST,001,52,1,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-05-14,,190,,001
-TEST,001,53,1,Hyperglycemia,Hyperglycaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-05-14,2026-06-24,190,231,001
-TEST,001,54,1,Activated partial thrombosplastin time prolonged,,,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-05-14,2026-06-04,190,211,001
-TEST,001,55,1,Lymphocyte count decreased,Lymphocyte count decreased,Investigations,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-06-04,,211,,001
-TEST,001,56,1,Hypermagnesemia,Hypermagnesaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-06-24,2026-07-16,231,253,001
-TEST,001,57,1,Insomnia,Insomnia,Psychiatric disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-07-16,,253,,001
-TEST,001,58,1,Nausea,Nausea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,253,,001
-TEST,001,59,1,Alkaline phosphatase increased,Blood alkaline phosphatase increased,Investigations,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,253,,001
-TEST,001,60,1,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,253,,001
-TEST,001,61,1,Activated partial thromboplastin time prolonged,Activated partial thromboplastin time prolonged,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,253,,001
-TEST,002,1,1,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,Y,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-02-26,2026-03-18,85,105,002
-TEST,002,2,2,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,Y,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,4,2026-03-19,2026-04-06,106,124,002
-TEST,002,3,1,Rash maculo-papular,Rash maculo-papular,Skin and subcutaneous tissue disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-05,,64,,002
+TEST,001,16,2,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,3,2026-01-29,2026-02-11,85,98,001
+TEST,001,17,3,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,2,2026-02-12,2026-02-19,99,106,001
+TEST,001,18,4,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,1,2026-02-19,2026-06-07,106,214,001
+TEST,001,19,1,Dyspnea,Dyspnoea,"Respiratory, thoracic and mediastinal disorders",N,DOSE REDUCED,Related,RECOVERED/RESOLVED,2,2025-12-03,2026-02-12,28,99,001
+TEST,001,20,1,Weight gain,Weight increased,Investigations,N,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED,2,2025-12-03,2025-12-11,28,36,001
+TEST,001,21,1,Weight gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2025-12-16,2026-01-28,41,84,001
+TEST,001,22,2,Weight gain,Weight increased,Investigations,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,3,2026-01-29,2026-02-11,85,98,001
+TEST,001,23,3,Weight gain,Weight increased,Investigations,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,2,2026-02-12,2026-02-19,99,106,001
+TEST,001,24,1,Hyperglycemia,Hyperglycaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2025-12-11,2026-01-29,36,85,001
+TEST,001,25,1,Hyperkalemia,Hyperkalaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2025-12-16,2026-01-08,41,64,001
+TEST,001,26,1,Alkaline phosphatase increased,Blood alkaline phosphatase increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2025-12-16,2026-02-08,41,95,001
+TEST,001,27,1,Activated partial thromboplastin time prolonged,Activated partial thromboplastin time prolonged,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-01-08,2026-02-19,64,106,001
+TEST,001,28,1,Chronic kidney disease,Chronic kidney disease,Renal and urinary disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-29,2026-04-01,85,147,001
+TEST,001,29,2,Chronic kidney disease,Chronic kidney disease,Renal and urinary disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-04-02,2026-04-21,148,167,001
+TEST,001,30,3,Chronic kidney disease,Chronic kidney disease,Renal and urinary disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-04-22,,168,,001
+TEST,001,31,1,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",N,DOSE REDUCED,Related,RECOVERED/RESOLVED,3,2026-01-29,2026-02-11,85,98,001
+TEST,001,32,2,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-02-12,2026-04-22,99,168,001
+TEST,001,33,1,Genital edema,Oedema genital,Reproductive system and breast disorders,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,3,2026-01-29,2026-02-11,85,98,001
+TEST,001,34,2,Genital edema,Oedema genital,Reproductive system and breast disorders,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,2,2026-02-12,2026-02-18,99,105,001
+TEST,001,35,3,Genital edema,Oedema genital,Reproductive system and breast disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-02-19,2026-04-02,106,148,001
+TEST,001,36,1,Parathyroid hormone increased,Blood parathyroid hormone increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-01-29,,85,,001
+TEST,001,37,1,Arthralgia,Arthralgia,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-02-06,2026-02-18,93,105,001
+TEST,001,38,2,Arthralgia,Arthralgia,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-19,,106,,001
+TEST,001,39,1,Nail discoloration,Nail discolouration,Skin and subcutaneous tissue disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-02-19,2026-06-24,106,231,001
+TEST,001,40,1,Back pain,Back pain,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-19,2026-03-11,106,126,001
+TEST,001,41,2,Back pain,Back pain,Musculoskeletal and connective tissue disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-12,2026-04-01,127,147,001
+TEST,001,42,3,Back pain,Back pain,Musculoskeletal and connective tissue disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-04-02,,148,,001
+TEST,001,43,1,Insomnia,Insomnia,Psychiatric disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2026-03-12,2026-05-14,127,190,001
+TEST,001,44,1,Activated partial thromboplastin time prolonged,Activated partial thromboplastin time prolonged,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-03-12,2026-04-22,127,168,001
+TEST,001,45,1,Lymphocyte count decreased,Lymphocyte count decreased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-04-02,2026-05-14,148,190,001
+TEST,001,46,1,Dehydration,Dehydration,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-04-22,2026-06-03,168,210,001
+TEST,001,47,2,Dehydration,Dehydration,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-04,,211,,001
+TEST,001,48,1,Hypermagnesemia,Hypermagnesaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,,2026-06-04,,211,001
+TEST,001,49,1,Alkaline phosphatase increased,Blood alkaline phosphatase increased,Investigations,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-04-22,2026-05-14,168,190,001
+TEST,001,50,1,Creatine increased,Blood creatine increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-04-22,,168,,001
+TEST,001,51,1,Weight loss,Weight decreased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-04-22,,168,,001
+TEST,001,52,1,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-05-14,,190,,001
+TEST,001,53,1,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-05-14,,190,,001
+TEST,001,54,1,Hyperglycemia,Hyperglycaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-05-14,2026-06-24,190,231,001
+TEST,001,55,1,Activated partial thrombosplastin time prolonged,,,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-05-14,2026-06-04,190,211,001
+TEST,001,56,1,Lymphocyte count decreased,Lymphocyte count decreased,Investigations,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-06-04,,211,,001
+TEST,001,57,1,Hypermagnesemia,Hypermagnesaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-06-24,2026-07-16,231,253,001
+TEST,001,58,1,Insomnia,Insomnia,Psychiatric disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-07-16,,253,,001
+TEST,001,59,1,Nausea,Nausea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,253,,001
+TEST,001,60,1,Alkaline phosphatase increased,Blood alkaline phosphatase increased,Investigations,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,253,,001
+TEST,001,61,1,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,253,,001
+TEST,001,62,1,Activated partial thromboplastin time prolonged,Activated partial thromboplastin time prolonged,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-16,,253,,001
+TEST,002,1,1,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,Y,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2026-02-26,2026-03-18,85,105,002
+TEST,002,2,2,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,Y,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED,4,2026-03-19,2026-04-06,106,124,002
+TEST,002,3,1,Rash maculo-papular,Rash maculo-papular,Skin and subcutaneous tissue disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-05,2026-03-19,64,106,002
 TEST,002,4,1,Leukocytosis,Leukocytosis,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-05,,64,,002
-TEST,002,5,1,Creatinine increased,Blood creatinine increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-03-19,,106,,002
+TEST,002,5,1,Creatinine increased,Blood creatinine increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-03-19,2026-03-19,106,106,002
 TEST,002,6,1,Hyperkalemia,Hyperkalaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-19,,106,,002
 TEST,002,7,1,Eosinophilia,Eosinophilia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-03-19,,106,,002
 TEST,002,8,1,Hypermagnesemia,Hypermagnesaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-03-19,,106,,002
-TEST,002,9,1,TSH increased,Blood thyroid stimulating hormone increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-02-26,,85,,002
+TEST,002,9,1,TSH increased,Blood thyroid stimulating hormone increased,Investigations,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-02-26,2026-04-30,85,148,002
 TEST,002,10,1,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",Y,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-01-13,2026-02-25,41,84,002
 TEST,002,11,2,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",Y,DOSE REDUCED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-02-26,2026-05-04,85,152,002
 TEST,002,12,3,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",Y,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-05-05,2026-05-20,153,168,002
 TEST,002,13,4,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",Y,NOT APPLICABLE,Related,NOT RECOVERED/NOT RESOLVED,1,2026-05-21,,169,,002
-TEST,002,14,1,Dyspnea,Dyspnoea,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-26,2026-05-04,85,152,002
-TEST,002,15,2,Dyspnea,Dyspnoea,"Respiratory, thoracic and mediastinal disorders",N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-05-05,2026-05-07,153,155,002
+TEST,002,14,1,Dyspnea,Dyspnoea,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-02-26,2026-05-04,85,152,002
+TEST,002,15,2,Dyspnea,Dyspnoea,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,3,2026-05-05,2026-05-07,153,155,002
 TEST,002,16,1,Generalized muscle weakness,Muscular weakness,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-29,2026-04-29,26,147,002
 TEST,002,17,2,Generalized muscle weakness,Muscular weakness,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-04-30,2026-05-04,148,152,002
 TEST,002,18,3,Generalized muscle weakness,Muscular weakness,Musculoskeletal and connective tissue disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-05-05,,153,,002
-TEST,002,19,1,Mucositis,Mucosal inflammation,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-18,,15,,002
-TEST,002,20,1,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2025-12-29,,26,,002
-TEST,002,21,1,Weight gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-08,,36,,002
-TEST,002,22,1,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-13,,41,,002
-TEST,002,23,1,Ascites,Ascites,Gastrointestinal disorders,Y,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-13,2026-05-04,41,152,002
-TEST,002,24,2,Ascites,Ascites,Gastrointestinal disorders,Y,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,3,2026-05-05,,153,,002
-TEST,002,25,1,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-18,,15,,002
+TEST,002,19,1,Mucositis,Mucosal inflammation,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-18,2026-01-12,15,40,002
+TEST,002,20,2,Mucositis,Mucosal inflammation,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-13,2026-02-25,41,84,002
+TEST,002,21,3,Mucositis,Mucosal inflammation,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-02-26,2026-04-29,-281,147,002
+TEST,002,22,1,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-29,2026-01-27,26,55,002
+TEST,002,23,2,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-27,2026-02-26,55,85,002
+TEST,002,24,3,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-26,2026-03-19,85,106,002
+TEST,002,25,1,Weight gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-01-08,2026-02-25,36,84,002
+TEST,002,26,2,Weight gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-26,2026-03-18,85,105,002
+TEST,002,27,3,Weight gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-19,,106,,002
+TEST,002,28,1,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-01-13,,41,,002
+TEST,002,29,1,Ascites,Ascites,Gastrointestinal disorders,Y,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-01-13,2026-05-04,41,152,002
+TEST,002,30,2,Ascites,Ascites,Gastrointestinal disorders,Y,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,3,2026-05-05,,153,,002
+TEST,002,31,1,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-18,,15,,002
+TEST,002,32,2,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,1,2025-12-29,2026-03-18,26,105,002
+TEST,002,33,3,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE REDUCED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-19,2026-04-05,106,123,002
+TEST,002,34,4,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-04-06,2026-05-12,124,160,002
+TEST,002,35,5,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-05-13,2026-06-10,161,189,002
+TEST,002,36,6,Hypoalbuminemia,Hypoalbuminaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-11,,190,,002
 TEST,004,1,1,Fatigue,Fatigue,General disorders and administration site conditions,Y,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-19,2026-03-05,8,22,004
 TEST,004,2,2,Fatigue,Fatigue,General disorders and administration site conditions,Y,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,3,2026-03-16,2026-03-18,33,35,004
 TEST,004,3,3,Fatigue,Fatigue,General disorders and administration site conditions,Y,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-06,2026-03-15,23,32,004
@@ -447,14 +467,55 @@ TEST,004,5,5,Fatigue,Fatigue,General disorders and administration site condition
 TEST,004,6,6,Fatigue,Fatigue,General disorders and administration site conditions,Y,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-05-07,2026-05-21,85,99,004
 TEST,004,7,7,Fatigue,Fatigue,General disorders and administration site conditions,Y,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-05-22,2026-06-17,100,126,004
 TEST,004,8,8,Fatigue,Fatigue,General disorders and administration site conditions,Y,NOT APPLICABLE,Related,NOT RECOVERED/NOT RESOLVED,2,2026-06-18,,127,,004
-TEST,004,9,1,Hypotension,Hypotension,Vascular disorders,N,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED,2,2026-03-06,2026-03-18,23,35,004
-TEST,004,10,1,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DRUG INTERRUPTED,Not Related,RECOVERING/RESOLVING,2,2026-03-06,2026-03-15,23,32,004
-TEST,004,11,2,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DRUG INTERRUPTED,Not Related,RECOVERING/RESOLVING,3,2026-03-16,2026-03-18,33,35,004
-TEST,004,12,3,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DRUG INTERRUPTED,Not Related,RECOVERING/RESOLVING,1,2026-03-19,2026-03-25,36,42,004
-TEST,004,13,4,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DOSE REDUCED,Not Related,RECOVERING/RESOLVING,1,2026-03-26,,43,,004
-TEST,004,14,1,Urinary tract infection,Urinary tract infection,Infections and infestations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-03-09,2026-03-15,26,32,004
-TEST,004,15,1,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-02-26,2026-03-15,15,32,004
-TEST,004,16,2,Anemia,Anaemia,Blood and lymphatic system disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-03-16,2026-03-18,33,35,004
-TEST,004,17,3,Anemia,Anaemia,Blood and lymphatic system disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-19,2026-03-25,36,42,004
-TEST,004,18,4,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE REDUCED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-26,2026-04-15,43,63,004
-TEST,004,19,5,Anemia,Anaemia,Blood and lymphatic system disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-04-16,,64,,004
+TEST,004,9,1,Sinus bradycardia,Sinus bradycardia,Cardiac disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-02-13,2026-02-19,2,8,004
+TEST,004,10,1,Abdominal pain,Abdominal pain,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-02-12,2026-02-17,1,6,004
+TEST,004,11,1,Abdominal pain,Abdominal pain,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-04-10,2026-04-10,58,58,004
+TEST,004,12,1,Trigger finger,Trigger finger,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-02-12,2026-04-16,1,64,004
+TEST,004,13,1,Dry mouth,Dry mouth,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-02-18,2026-04-06,7,54,004
+TEST,004,14,1,Dry mouth,Dry mouth,Gastrointestinal disorders,N,NOT APPLICABLE,Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-18,,127,,004
+TEST,004,15,1,Hoarseness,,,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-02-19,,8,,004
+TEST,004,16,1,Lymphocyte count decreased,Lymphocyte count decreased,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2026-03-05,2026-03-16,22,33,004
+TEST,004,17,1,Lymphocyte count decreased,Lymphocyte count decreased,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-03-19,2026-03-26,36,43,004
+TEST,004,18,1,Hypocalcemia,Hypocalcaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-03-05,2026-03-19,22,36,004
+TEST,004,19,1,Hypotension,Hypotension,Vascular disorders,N,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED,2,2026-03-06,2026-03-18,23,35,004
+TEST,004,20,1,Hypocalcemia,Hypocalcaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-04-16,2026-05-06,64,84,004
+TEST,004,21,1,Hypocalcemia,Hypocalcaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-05-21,2026-06-04,99,113,004
+TEST,004,22,1,Hypocalcemia,Hypocalcaemia,Metabolism and nutrition disorders,N,NOT APPLICABLE,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-17,,126,,004
+TEST,004,23,1,Hyperglycemia,Hyperglycaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-03-05,2026-03-09,22,26,004
+TEST,004,24,1,Hyperglycemia,Hyperglycaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-03-17,2026-03-19,34,36,004
+TEST,004,25,1,Hyperglycemia,Hyperglycaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-03-26,2026-04-16,43,64,004
+TEST,004,26,1,Hyperglycemia,Hyperglycaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-05-06,2026-05-21,84,99,004
+TEST,004,27,1,Hypomagnesemia,Hypomagnesaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-03-06,2026-03-26,23,43,004
+TEST,004,28,1,Fall,Fall,"Injury, poisoning and procedural complications",N,DRUG INTERRUPTED,Not Related,RECOVERED/RESOLVED,1,2026-03-06,2026-03-06,23,23,004
+TEST,004,29,1,Fall,Fall,"Injury, poisoning and procedural complications",N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-03-06,2026-03-15,23,32,004
+TEST,004,30,2,Fall,Fall,"Injury, poisoning and procedural complications",N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-03-16,2026-03-18,33,35,004
+TEST,004,31,3,Fall,Fall,"Injury, poisoning and procedural complications",N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-03-19,2026-03-26,36,43,004
+TEST,004,32,1,Dizziness,Dizziness,Nervous system disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-03-06,2026-03-15,23,32,004
+TEST,004,33,1,Diarrhea,Diarrhoea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-03-09,2026-03-19,26,36,004
+TEST,004,34,1,Generalized muscle weakness,Muscular weakness,Musculoskeletal and connective tissue disorders,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,3,2026-03-16,2026-03-18,33,35,004
+TEST,004,35,2,Generalized muscle weakness,Muscular weakness,Musculoskeletal and connective tissue disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-03-19,2026-04-16,36,64,004
+TEST,004,36,1,Generalized muscle weakness,Muscular weakness,Musculoskeletal and connective tissue disorders,N,NOT APPLICABLE,Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-18,,127,,004
+TEST,004,37,1,Dry skin,Dry skin,Skin and subcutaneous tissue disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-04-07,,55,,004
+TEST,004,38,1,Anorexia,Decreased appetite,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-05-07,,85,,004
+TEST,004,39,1,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-05-06,2026-05-20,84,98,004
+TEST,004,40,2,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-05-21,2026-06-03,99,112,004
+TEST,004,41,3,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-04,,113,,004
+TEST,004,42,1,Eosinophilia,Eosinophilia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-04-16,2026-05-06,64,84,004
+TEST,004,43,1,Eosinophilia,Eosinophilia,Blood and lymphatic system disorders,N,NOT APPLICABLE,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-17,,126,,004
+TEST,004,44,1,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,2,2026-02-26,2026-03-04,15,21,004
+TEST,004,45,2,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,1,2026-03-05,2026-03-05,22,22,004
+TEST,004,46,3,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,3,2026-03-06,2026-03-15,23,32,004
+TEST,004,47,4,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,3,2026-03-16,2026-03-18,33,35,004
+TEST,004,48,5,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED,1,2026-03-19,2026-03-25,36,42,004
+TEST,004,49,6,Hyponatremia,Hyponatraemia,Metabolism and nutrition disorders,N,DOSE REDUCED,Related,RECOVERED/RESOLVED,1,2026-03-26,2026-04-16,43,64,004
+TEST,004,50,1,Urinary tract infection,Urinary tract infection,Infections and infestations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2026-03-09,2026-03-15,26,32,004
+TEST,004,51,1,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-02-26,2026-03-15,15,32,004
+TEST,004,52,2,Anemia,Anaemia,Blood and lymphatic system disorders,N,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,3,2026-03-16,2026-03-18,33,35,004
+TEST,004,53,3,Anemia,Anaemia,Blood and lymphatic system disorders,N,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-19,2026-03-25,36,42,004
+TEST,004,54,4,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-03-26,2026-04-15,43,63,004
+TEST,004,55,5,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,3,2026-04-16,2026-04-16,64,64,004
+TEST,004,56,6,Anemia,Anaemia,Blood and lymphatic system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-04-17,2026-06-16,65,125,004
+TEST,004,57,7,Anemia,Anaemia,Blood and lymphatic system disorders,N,NA,Related,NOT RECOVERED/NOT RESOLVED,2,2026-06-17,,126,,004
+TEST,004,58,1,Electrocardiogram QT corrected interval prolonged,Electrocardiogram QT prolonged,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,2,2026-02-12,,1,,004
+TEST,004,59,2,Electrocardiogram QT corrected interval prolonged,Electrocardiogram QT prolonged,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-02-13,2026-02-19,2,8,004
+TEST,004,60,1,Electrocardiogram QT corrected interval prolonged,Electrocardiogram QT prolonged,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-05-07,2026-05-22,85,100,004
