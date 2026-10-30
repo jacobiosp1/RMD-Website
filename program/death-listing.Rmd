@@ -38,7 +38,7 @@ parse_any_date <- function(x) {
 # =====================================================================
 # 1. 数据加工 (对应 SAS 的 adaepre 和 pre_final)
 # =====================================================================
-adae <- read.csv("../data/1002/adae.csv", stringsAsFactors = FALSE)
+adae <- read.csv("../data/1002/ADAE.csv", stringsAsFactors = FALSE)
 if(!"LSTRTEDT" %in% names(adae)) {
   adae$LSTRTEDT <- NA
 }
