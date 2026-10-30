@@ -44,6 +44,12 @@ date: "`r Sys.Date()`"
 
 ---
 
+## [📦 死亡列表 →](./program/death-listing.html)
+
+点击查看死亡列表。
+
+---
+
 ## [📧 联系我们 →](./program/contact.html)
 
 如有疑问，欢迎联系我们。

@@ -26,9 +26,9 @@ output:
 # 1. 读取数据 (对应原 SAS 的 %d_mergesupp 和 merge)
 # ==============================================================================
 # 根据之前的需求，读取路径假定为 ../data/
-ae_raw <- read.csv("../data/ae.csv", stringsAsFactors = FALSE, colClasses = "character", na.strings = c("", "NA", ".", "N/A", "NULL"))
-suppae_raw <- read.csv("../data/suppae.csv", stringsAsFactors = FALSE, colClasses = "character", na.strings = c("", "NA", ".", "N/A", "NULL"))
-adsl_raw <- read.csv("../data/adsl_1.csv", stringsAsFactors = FALSE, colClasses = "character", na.strings = c("", "NA", ".", "N/A", "NULL"))
+ae_raw <- read.csv("../data/1002/ae.csv", stringsAsFactors = FALSE, colClasses = "character", na.strings = c("", "NA", ".", "N/A", "NULL"))
+suppae_raw <- read.csv("../data/1002/suppae.csv", stringsAsFactors = FALSE, colClasses = "character", na.strings = c("", "NA", ".", "N/A", "NULL"))
+adsl_raw <- read.csv("../data/1002/adsl_1.csv", stringsAsFactors = FALSE, colClasses = "character", na.strings = c("", "NA", ".", "N/A", "NULL"))
 
 # 统一变量名大小写，防止 CSV 名称与 SAS 中不一致
 names(ae_raw) <- toupper(str_trim(names(ae_raw)))

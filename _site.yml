@@ -20,6 +20,8 @@ navbar:
       href: program/tables.html
     - text: "数据列表"
       href: program/listing.html
+    - text: "死亡列表"
+      href: program/death-listing.html
     - text: "联系我们"
       href: program/contact.html
       

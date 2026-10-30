@@ -23,10 +23,10 @@ library(tidyverse)
 
 # ------------------------------ 1. 读取数据 ---------------------------------
 
-adsl <- read.csv("../data/ADSL.csv", 
+adsl <- read.csv("../data/1007/ADSL.csv", 
                  stringsAsFactors = FALSE, 
                  na.strings = c("", "NA"))
-adrs <- read.csv("../data/ADRS.csv", 
+adrs <- read.csv("../data/1007/ADRS.csv", 
                  stringsAsFactors = FALSE, 
                  na.strings = c("", "NA"))
 

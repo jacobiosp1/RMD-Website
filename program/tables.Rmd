@@ -29,7 +29,7 @@ library(kableExtra)
 # 1. 路径与配置 (替换原脚本第 1 节，移除本地目录创建逻辑)
 # ==============================================================================
 # 注意：如果 Rmd 在根目录，这里可能改为 "data/ADTTE.csv" 或 here::here("data", "ADTTE.csv")
-input_file <- "../data/ADTTE.csv"
+input_file <- "../data/1007/ADTTE.csv"
 
 os_timelist <- c(3, 6, 9, 12, 15, 18, 21, 24)
 treatment_display_order <- NULL
