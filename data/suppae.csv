@@ -536,7 +536,7 @@ TEST,AE,008,AESEQ,1,AEONGO,Ongoing of Adverse Event?,No,CRF,,008
 TEST,AE,008,AESEQ,2,AEDLT,Dose Limiting Toxicity?,Not Applicable,CRF,,008
 TEST,AE,008,AESEQ,2,AEONGO,Ongoing of Adverse Event?,No,CRF,,008
 TEST,AE,008,AESEQ,3,AEDLT,Dose Limiting Toxicity?,No,CRF,,008
-TEST,AE,008,AESEQ,3,AEONGO,Ongoing of Adverse Event?,Yes,CRF,,008
+TEST,AE,008,AESEQ,3,AEONGO,Ongoing of Adverse Event?,No,CRF,,008
 TEST,AE,008,AESEQ,4,AEDLT,Dose Limiting Toxicity?,Not Applicable,CRF,,008
 TEST,AE,008,AESEQ,4,AEONGO,Ongoing of Adverse Event?,No,CRF,,008
 TEST,AE,008,AESEQ,5,AEDLT,Dose Limiting Toxicity?,Not Applicable,CRF,,008
@@ -695,6 +695,8 @@ TEST,AE,006,AESEQ,16,AEDLT,Dose Limiting Toxicity?,Not Applicable,CRF,,006
 TEST,AE,006,AESEQ,16,AEONGO,Ongoing of Adverse Event?,Yes,CRF,,006
 TEST,AE,006,AESEQ,17,AEDLT,Dose Limiting Toxicity?,Not Applicable,CRF,,006
 TEST,AE,006,AESEQ,17,AEONGO,Ongoing of Adverse Event?,Yes,CRF,,006
+TEST,AE,006,AESEQ,18,AEDLT,Dose Limiting Toxicity?,Not Applicable,CRF,,006
+TEST,AE,006,AESEQ,18,AEONGO,Ongoing of Adverse Event?,Yes,CRF,,006
 TEST,AE,007,AESEQ,1,AEDLT,Dose Limiting Toxicity?,Not Applicable,CRF,,007
 TEST,AE,007,AESEQ,1,AEONGO,Ongoing of Adverse Event?,Yes,CRF,,007
 TEST,AE,007,AESEQ,2,AEDLT,Dose Limiting Toxicity?,Not Applicable,CRF,,007

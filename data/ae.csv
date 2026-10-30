@@ -268,7 +268,7 @@ TEST,007,22,1,Anorexia,Decreased appetite,Metabolism and nutrition disorders,N,D
 TEST,007,23,1,"dizziness, intermittent",Dizziness,Nervous system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-05-28,,18,,007
 TEST,008,1,1,Diarrhea,Diarrhoea,Gastrointestinal disorders,N,DOSE NOT CHANGED,Related,RECOVERED/RESOLVED,3,2026-06-09,2026-06-09,6,6,008
 TEST,008,2,1,"Pain - Nerve pain, intermittent",Neuralgia,Nervous system disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-07-06,2026-08-13,33,71,008
-TEST,008,3,1,Pneumonitis,Pneumonitis,"Respiratory, thoracic and mediastinal disorders",Y,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,3,2026-08-06,2026-08-19,64,77,008
+TEST,008,3,1,Pneumonitis,Pneumonitis,"Respiratory, thoracic and mediastinal disorders",Y,DRUG INTERRUPTED,Related,RECOVERED/RESOLVED WITH SEQUELAE,3,2026-08-06,2026-08-19,64,77,008
 TEST,008,4,1,Anemia,Anaemia,Blood and lymphatic system disorders,N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-08-06,2026-08-26,64,84,008
 TEST,008,5,1,Weight gain,Weight increased,Investigations,N,DOSE NOT CHANGED,Not Related,RECOVERED/RESOLVED,1,2026-06-16,2026-08-06,13,64,008
 TEST,008,6,1,Edema limbs,Oedema peripheral,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-06-16,2026-09-03,13,92,008
@@ -344,10 +344,11 @@ TEST,006,10,1,Aspartate aminotransferase increased,Aspartate aminotransferase in
 TEST,006,11,1,Fatigue,Fatigue,General disorders and administration site conditions,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-08-06,,15,,006
 TEST,006,12,1,Peripheral sensory neuropathy,Peripheral sensory neuropathy,Nervous system disorders,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,1,2026-08-27,,36,,006
 TEST,006,13,1,Dyspnea,Dyspnoea,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-03,,43,,006
-TEST,006,14,1,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-03,2026-09-09,43,49,006
-TEST,006,15,2,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",N,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-09-10,2026-09-16,50,56,006
-TEST,006,16,3,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-17,,57,,006
-TEST,006,17,1,Pneumonitis,Pneumonitis,"Respiratory, thoracic and mediastinal disorders",Y,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-03,,43,,006
+TEST,006,14,1,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",Y,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-03,2026-09-09,43,49,006
+TEST,006,15,2,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",Y,DRUG INTERRUPTED,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-09-10,2026-09-16,50,56,006
+TEST,006,16,3,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",Y,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-17,,57,,006
+TEST,006,17,4,Pleural effusion,Pleural effusion,"Respiratory, thoracic and mediastinal disorders",Y,NOT APPLICABLE,Not Related,NOT RECOVERED/NOT RESOLVED,3,2026-10-27,,97,,006
+TEST,006,18,1,Pneumonitis,Pneumonitis,"Respiratory, thoracic and mediastinal disorders",Y,DRUG INTERRUPTED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-03,,43,,006
 TEST,007,1,1,Lower gastrointestinal hemorrhage,,,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-09-09,,-8,,007
 TEST,007,2,1,Hypomagnesemia,Hypomagnesaemia,Metabolism and nutrition disorders,N,DOSE NOT CHANGED,Not Related,NOT RECOVERED/NOT RESOLVED,1,2026-10-08,,22,,007
 TEST,007,3,1,Peripheral sensory neuropathy (bilateral arms),,,N,DOSE NOT CHANGED,Related,NOT RECOVERED/NOT RESOLVED,2,2026-09-23,,7,,007
